@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -462,6 +462,11 @@
               <FileName>tim8.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\Adanved_timx\tim8.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\systick\systick.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -617,6 +622,18 @@
         </Group>
         <Group>
           <GroupName>CONTROL</GroupName>
+          <Files>
+            <File>
+              <FileName>PID.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\PID\PID.c</FilePath>
+            </File>
+            <File>
+              <FileName>loop.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\loop\loop.c</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
           <GroupName>SENSORS</GroupName>

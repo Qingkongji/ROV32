@@ -9,8 +9,8 @@
 #define            ADVANCE_TIM                   TIM8
 #define            ADVANCE_TIM_CLK               RCC_APB2Periph_TIM8
 // PWM ÐÅºÅµÄÆµÂÊ F = TIM_CLK/{(ARR+1)*(PSC+1)}
-#define            ADVANCE_TIM_PERIOD            (100-1)
-#define            ADVANCE_TIM_PSC               (14400-1)
+#define            ADVANCE_TIM_PERIOD            (2000-1)
+#define            ADVANCE_TIM_PSC               (720-1)
 
 #define            ADVANCE_TIM_IRQ               TIM8_UP_IRQn
 #define            ADVANCE_TIM_IRQHandler        TIM8_UP_IRQHandler

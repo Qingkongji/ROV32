@@ -55,7 +55,7 @@ static void ADVANCE_TIM_Mode_Config(void)
 {
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
 	TIM_OCInitTypeDef  TIM_OCInitStructure;
-	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
+//	TIM_BDTRInitTypeDef TIM_BDTRInitStructure;
 	
 	RCC_APB2PeriphClockCmd(ADVANCE_TIM_CLK, ENABLE);
 	
@@ -84,22 +84,22 @@ static void ADVANCE_TIM_Mode_Config(void)
 	TIM_OCInitStructure.TIM_OCIdleState = TIM_OCIdleState_Set;
 	
 	//CH1
-	TIM_OCInitStructure.TIM_Pulse = 50;
+	TIM_OCInitStructure.TIM_Pulse = 150;
 	TIM_OC1Init(ADVANCE_TIM, &TIM_OCInitStructure);
 	TIM_OC1PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 	
 	//CH2
-	TIM_OCInitStructure.TIM_Pulse = 40;
+	TIM_OCInitStructure.TIM_Pulse = 150;
 	TIM_OC2Init(ADVANCE_TIM, &TIM_OCInitStructure);
 	TIM_OC2PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 	
 	//CH3
-	TIM_OCInitStructure.TIM_Pulse = 30;
+	TIM_OCInitStructure.TIM_Pulse = 150;
 	TIM_OC3Init(ADVANCE_TIM, &TIM_OCInitStructure);
 	TIM_OC3PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 	
 	//CH4
-	TIM_OCInitStructure.TIM_Pulse = 20;
+	TIM_OCInitStructure.TIM_Pulse = 150;
 	TIM_OC4Init(ADVANCE_TIM, &TIM_OCInitStructure);
 	TIM_OC4PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 

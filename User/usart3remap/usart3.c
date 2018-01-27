@@ -15,7 +15,7 @@ static void NVIC_USART3_Configuration(void)
   /* 配置USART为中断源 */
   NVIC_InitStructure.NVIC_IRQChannel = USART3_IRQn;
   /* 抢断优先级*/
-  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 1;
+  NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 3;
   /* 子优先级 */
   NVIC_InitStructure.NVIC_IRQChannelSubPriority = 1;
   /* 使能中断 */

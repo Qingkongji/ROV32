@@ -27,6 +27,7 @@
 #include "stm32f10x_it.h"
 #include "usart1.h"
 #include "JY901.h"
+#include "loop.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */
@@ -141,6 +142,7 @@ void PendSV_Handler(void)
   */
 void SysTick_Handler(void)
 {
+	loop_cnt();
 }
 
 // 串口中断服务函数
@@ -150,25 +152,9 @@ void NEO_USART_IRQHandler(void)
 	if(USART_GetITStatus(NEO_USARTx,USART_IT_RXNE)!=RESET)
 	{		
 		ucTemp = USART_ReceiveData(NEO_USARTx);
-    USART_SendData(NEO_USARTx,ucTemp);    
+    USART_SendData(NEO_USARTx,ucTemp); 
 	}	 
 		
-//	if(USART_GetITStatus(USART1, USART_IT_TXE) != RESET)
-//  {   
-//    USART_SendData(USART1, TxBuffer[TxCounter++]); 
-//    if(TxCounter == count) 
-//		{
-//			USART_ITConfig(USART1, USART_IT_TXE, DISABLE);// 全部发送完成
-//		}
-//    USART_ClearITPendingBit(USART1, USART_IT_TXE); 
-//  }
-//	else if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
-//  {
-//		GetDataFromJY901((unsigned char)USART1->DR);//处理数据
-//		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-//  }
-//	USART_ClearITPendingBit(USART1,USART_IT_ORE);
-
 }
 
 void USART3_IRQHandler(void)

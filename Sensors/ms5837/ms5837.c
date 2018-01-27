@@ -11,6 +11,8 @@ uint16_t C[8];
 uint32_t D1, D2;
 int32_t Temp;
 int32_t P;
+static int Part_of_MS5837 = 1;
+static uint8_t bufe[3];
 
 
 /****************************
@@ -83,7 +85,6 @@ static void MS5837_Calculate(void)
 
 static void MS5837_Getdata(void)
 {
-	uint8_t bufe[3];
 	MS5837_WriteByte(MS5837_ADDRESS,0x48, 0x00);
 	I2C_delay_ms(20);
 	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
@@ -93,6 +94,30 @@ static void MS5837_Getdata(void)
 	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
 	D2=bufe[0]<<16|bufe[1]<<8|bufe[2];	
 }
+
+/********************************
+功能：得到传感器中的原始数据分步进行，为的是去掉中间的延时
+参数：None
+返回：None
+*********************************
+static void MS5837_Getdata_Part1(void)
+{
+	MS5837_WriteByte(MS5837_ADDRESS,0x48, 0x00);
+}
+
+static void MS5837_Getdata_Part2(void)
+{
+	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
+	D1=bufe[0]<<16|bufe[1]<<8|bufe[2];
+	MS5837_WriteByte(MS5837_ADDRESS,0x58, 0x00);
+}
+
+static void MS5837_Getdata_Part3(void)
+{
+	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
+	D2=bufe[0]<<16|bufe[1]<<8|bufe[2];
+}
+*********************************/
 
 
 /********************************
@@ -157,6 +182,7 @@ void MS5837_SetOffset(float offset)
 void MS5837_Init(void) 
 {
 	uint8_t buf[2];
+	Part_of_MS5837 = 1;
 	
 	I2C_GPIOconfig();//初始化模拟IIC
 	MS5837_Reset();
@@ -193,3 +219,48 @@ void MS5837_Read(void)
 	MS5837.pressure=MS5837_pressure(Pa);
 }
 
+/********************************
+功能：得到传感器中的最终数据并将值赋给MS5837结构体，分为三部分
+参数：None
+返回：None
+*********************************/
+void MS5837_Read_Part1(void) 
+{
+	MS5837_WriteByte(MS5837_ADDRESS,0x48, 0x00);        //MS5837_Getdata_Part1
+}
+
+void MS5837_Read_Part2(void)                          //MS5837_Getdata_Part2
+{
+	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
+	D1=bufe[0]<<16|bufe[1]<<8|bufe[2];
+	MS5837_WriteByte(MS5837_ADDRESS,0x58, 0x00);
+}
+
+void MS5837_Read_Part3(void) 
+{
+	MS5837_ReadBuffer(MS5837_ADDRESS,bufe,0x00, 3);	
+	D2=bufe[0]<<16|bufe[1]<<8|bufe[2];                  //MS5837_Getdata_Part3
+	MS5837_Calculate();
+	MS5837.temp=MS5837_temperature();
+	MS5837.depth=MS5837_depth()-MS5837.offset;
+	MS5837.pressure=MS5837_pressure(Pa);
+}
+
+void MS5837_Read_From_Part(void)
+{
+	if(cnt_MS5837 >= 20)
+		{
+			switch( Part_of_MS5837 )
+			{
+				case 1:MS5837_Read_Part1();Part_of_MS5837 = 2;cnt_MS5837 = 0;break;
+				case 2:MS5837_Read_Part2();Part_of_MS5837 = 3;cnt_MS5837 = 0;break;
+				case 3:MS5837_Read_Part3();Part_of_MS5837 = 1;cnt_MS5837 = 0;
+//						sprintf(str,"temp=%f,depth=%f,pressure=%f,offset=%f\n",MS5837.temp,MS5837.depth,MS5837.pressure,MS5837.offset);
+//						Usart_SendString(NEO_USARTx,str);
+						break;
+				default:Part_of_MS5837 = 1;cnt_MS5837 = 0;break;
+			}
+		}
+}
+
+	
