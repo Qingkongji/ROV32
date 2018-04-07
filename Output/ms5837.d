@@ -16,3 +16,10 @@
 ..\output\ms5837.o: ..\Sensors\ms5837\ms5837.h
 ..\output\ms5837.o: ..\User\usart1\usart1.h
 ..\output\ms5837.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\ms5837.o: ..\Control\inner\inner.h
+..\output\ms5837.o: ..\User\General_timx\tim3.h
+..\output\ms5837.o: ..\User\Adanved_timx\tim8.h
+..\output\ms5837.o: ..\Control\PID\PID.h
+..\output\ms5837.o: ..\Sensors\JY901\JY901.h
+..\output\ms5837.o: ..\Control\remote\remote.h
+..\output\ms5837.o: ..\Control\outer\outer.h

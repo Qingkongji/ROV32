@@ -61,10 +61,10 @@ static void GENERAL_TIM_Mode_Config(void)
   TIM_TimeBaseInitTypeDef  TIM_TimeBaseStructure;	
 	TIM_OCInitTypeDef  TIM_OCInitStructure;
 	// 占空比配置
-	uint16_t CCR1_Val = 150;
-	uint16_t CCR2_Val = 150;
-	uint16_t CCR3_Val = 150;
-	uint16_t CCR4_Val = 150;
+	uint16_t CCR1_Val = 1500;
+	uint16_t CCR2_Val = 1500;
+	uint16_t CCR3_Val = 1500;
+	uint16_t CCR4_Val = 1500;
 
 	// 开启定时器时钟,即内部时钟CK_INT=72M
 	GENERAL_TIM_APBxClock_FUN(GENERAL_TIM_CLK,ENABLE);

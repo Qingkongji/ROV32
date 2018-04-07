@@ -32,7 +32,7 @@ void PIDdataInit(struct PID* pidData,uint16_t kp,uint16_t ki,uint16_t kd,int32_t
 	pidData->error=0;
 	pidData->last_error=0;
 	pidData->derror=0;
-	//pidData->set=0;
+	pidData->set=0;
 	pidData->out=0;
 }
 

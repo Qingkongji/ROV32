@@ -10,8 +10,8 @@
 #define            GENERAL_TIM                   TIM3
 #define            GENERAL_TIM_APBxClock_FUN     RCC_APB1PeriphClockCmd
 #define            GENERAL_TIM_CLK               RCC_APB1Periph_TIM3
-#define            GENERAL_TIM_Period            (2000-1)
-#define            GENERAL_TIM_Prescaler         (720-1)
+#define            GENERAL_TIM_Period            (20000-1)
+#define            GENERAL_TIM_Prescaler         (72-1)
 // TIM3 CH1
 #define            GENERAL_TIM_CH1_GPIO_CLK      RCC_APB2Periph_GPIOA
 #define            GENERAL_TIM_CH1_PORT          GPIOA

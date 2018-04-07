@@ -3,6 +3,8 @@
 
 #include "ms5837.h"
 #include "usart1.h"
+#include "inner.h"
+#include "outer.h"
 
 extern int cnt_MS5837;
 

@@ -8,7 +8,8 @@
 #include "tim8.h"
 #include "systick.h"
 #include "loop.h"
-
+#include "inner.h"
+#include "outer.h"
 
 int main(void)
 {	
@@ -21,13 +22,9 @@ int main(void)
 	TIM3_Init();
 	TIM8_Init();
 	Systick_Init();
-	
+	Outer_Init();
+	Inner_Init();
 		
-//	TIM_SetCompare1(GENERAL_TIM, 20);
-//	TIM_SetCompare2(GENERAL_TIM, 30);
-//	TIM_SetCompare3(GENERAL_TIM, 40);
-//	TIM_SetCompare4(GENERAL_TIM, 50);
-	
 	while(!(MS5837_CheckDevice()))
 	{
 		sprintf(str,"MS5837 disconnected\n");
@@ -43,20 +40,7 @@ int main(void)
 			
   while(1)
 	{	
-		MS5837_Read_From_Part();
-		sprintf(str,"temp=%f,depth=%f,pressure=%f,offset=%f\n",MS5837.temp,MS5837.depth,MS5837.pressure,MS5837.offset);
-		Usart_SendString(NEO_USARTx,str);
-		sprintf(str,"temp=%f,depth=%f,pressure=%f,offset=%f\n",MS5837.temp,MS5837.depth,MS5837.pressure,MS5837.offset);
-		Usart_SendString(NEO_USARTx,str);
-		
-		sprintf(str,"Gyro:%.3f %.3f %.3f\r\n",(float)JY901_Gyro.w[0]/32768*2000,(float)JY901_Gyro.w[1]/32768*2000,(float)JY901_Gyro.w[2]/32768*2000);
-		Usart_SendString(NEO_USARTx,str);
-		
-		sprintf(str,"Angle:%.3f %.3f %.3f\r\n",(float)JY901_Angle.Angle[0]/32768*180,(float)JY901_Angle.Angle[1]/32768*180,(float)JY901_Angle.Angle[2]/32768*180);
-		Usart_SendString(NEO_USARTx,str);
-		
 		ROV_Loop();
-//		I2C_delay_ms(2000);
 	}	
 }
 

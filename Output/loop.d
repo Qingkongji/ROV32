@@ -16,3 +16,10 @@
 ..\output\loop.o: ..\Control\loop\loop.h
 ..\output\loop.o: ..\User\usart1\usart1.h
 ..\output\loop.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+..\output\loop.o: ..\Control\inner\inner.h
+..\output\loop.o: ..\User\General_timx\tim3.h
+..\output\loop.o: ..\User\Adanved_timx\tim8.h
+..\output\loop.o: ..\Control\PID\PID.h
+..\output\loop.o: ..\Sensors\JY901\JY901.h
+..\output\loop.o: ..\Control\remote\remote.h
+..\output\loop.o: ..\Control\outer\outer.h

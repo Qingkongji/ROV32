@@ -147,7 +147,7 @@
             <RestoreSysVw>1</RestoreSysVw>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>12</TargetSelection>
+          <TargetSelection>11</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -161,7 +161,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>BIN\CMSIS_AGDI.dll</Driver>
+            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop;..\Control\outer;..\Control\inner;..\Control\remote</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -633,6 +633,21 @@
               <FileType>1</FileType>
               <FilePath>..\Control\loop\loop.c</FilePath>
             </File>
+            <File>
+              <FileName>outer.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\outer\outer.c</FilePath>
+            </File>
+            <File>
+              <FileName>inner.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\inner\inner.c</FilePath>
+            </File>
+            <File>
+              <FileName>remote.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Control\remote\remote.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -659,6 +674,9 @@
               <FilePath>..\Doc\readme.txt</FilePath>
             </File>
           </Files>
+        </Group>
+        <Group>
+          <GroupName>Mavlink</GroupName>
         </Group>
       </Groups>
     </Target>

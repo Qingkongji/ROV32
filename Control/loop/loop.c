@@ -1,6 +1,6 @@
 #include "loop.h"
 
-static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz;
+static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz;
 int cnt_MS5837;
 
 void loop_cnt(void)
@@ -9,6 +9,7 @@ void loop_cnt(void)
 	cnt_100Hz++;
 	cnt_50Hz++;
 	cnt_20Hz++;
+	cnt_10Hz++;
 	cnt_MS5837++;
 }	
 
@@ -21,19 +22,24 @@ static void Loop_200Hz(void)
 //姿态内环控制
 static void Loop_100Hz(void)
 {
-	Usart_SendString( NEO_USARTx, "100Hz");
+	Inner_Loop();
 }
 
 //姿态外环控制
 static void Loop_50Hz(void)
 {
-	Usart_SendString( NEO_USARTx, "50Hz");
+	Outer_Loop();
 }
 
 //无人机数据发送以及自检
 static void Loop_20Hz(void)
 {
 	Usart_SendString( NEO_USARTx, "20Hz\n");
+}
+
+static void Loop_10Hz(void)
+{
+	MS5837_Read_From_Part();
 }
 
 void ROV_Loop(void)
@@ -61,6 +67,12 @@ void ROV_Loop(void)
 		Loop_20Hz();
 		cnt_20Hz = 0;
 	}
+	
+	if( cnt_10Hz >= 100 )
+	{
+		Loop_10Hz();
+		cnt_10Hz = 0;
+	}
 }
 
 
@@ -70,6 +82,7 @@ void cnt_init(void)
 	cnt_100Hz = 0;
 	cnt_50Hz = 0;
 	cnt_20Hz = 0;
+	cnt_10Hz = 0;
 	cnt_MS5837 = 0;
 }
 
