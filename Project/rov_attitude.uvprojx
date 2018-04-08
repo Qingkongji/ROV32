@@ -367,9 +367,9 @@
             <v6LangP>0</v6LangP>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
+              <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER,DEBUG</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop;..\Control\outer;..\Control\inner;..\Control\remote</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop;..\Control\outer;..\Control\inner;..\Control\remote;..\User\debug</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
