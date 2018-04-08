@@ -23,4 +23,5 @@
 ..\output\inner.o: ..\Control\inner\inner.h
 ..\output\inner.o: ..\Control\outer\outer.h
 ..\output\inner.o: ..\Sensors\JY901\JY901.h
+..\output\inner.o: ..\User\debug\debug.h
 ..\output\inner.o: ..\Control\remote\remote.h

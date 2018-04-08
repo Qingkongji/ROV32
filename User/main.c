@@ -10,9 +10,11 @@
 #include "loop.h"
 #include "inner.h"
 #include "outer.h"
+#include "debug.h"
 
 int main(void)
 {	
+	
 	char str[100];
 	
 	/*初始化USART 115200 8-N-1，中断接收*/
@@ -25,6 +27,11 @@ int main(void)
 	Systick_Init();
 	Outer_Init();
 	Inner_Init();
+	
+#ifdef DEBUG
+	sprintf(str,"This is the debug edition\n");
+	Usart_SendString(NEO_USARTx,str);
+#endif
 		
 	while(!(MS5837_CheckDevice()))
 	{

@@ -28,6 +28,9 @@ static void Loop_100Hz(void)
 //×ËÌ¬Íâ»·¿ØÖÆ
 static void Loop_50Hz(void)
 {
+#ifdef OUTTERDEBUG
+  Usart_SendString( NEO_USARTx, "out loop debug\n");
+#endif
 	Outer_Loop();
 }
 
@@ -68,7 +71,7 @@ void ROV_Loop(void)
 		cnt_20Hz = 0;
 	}
 	
-	if( cnt_10Hz >= 100 )
+	if( cnt_10Hz >= 67 )
 	{
 		Loop_10Hz();
 		cnt_10Hz = 0;

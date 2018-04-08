@@ -1,4 +1,5 @@
 #include "ms5837.h"
+#include "debug.h"
 
 MS5837_ValueTypeDef MS5837={0,0,0,0.03};
 
@@ -248,6 +249,7 @@ void MS5837_Read_Part3(void)
 
 void MS5837_Read_From_Part(void)
 {
+	char str[100];
 	if(cnt_MS5837 >= 20)
 		{
 			switch( Part_of_MS5837 )
@@ -255,8 +257,11 @@ void MS5837_Read_From_Part(void)
 				case 1:MS5837_Read_Part1();Part_of_MS5837 = 2;cnt_MS5837 = 0;break;
 				case 2:MS5837_Read_Part2();Part_of_MS5837 = 3;cnt_MS5837 = 0;break;
 				case 3:MS5837_Read_Part3();Part_of_MS5837 = 1;cnt_MS5837 = 0;
-//						sprintf(str,"temp=%f,depth=%f,pressure=%f,offset=%f\n",MS5837.temp,MS5837.depth,MS5837.pressure,MS5837.offset);
-//						Usart_SendString(NEO_USARTx,str);
+				
+#ifdef MS5837DEBUG
+		    sprintf(str,"temp=%f,depth=%f,pressure=%f,offset=%f\n",MS5837.temp,MS5837.depth,MS5837.pressure,MS5837.offset);
+		    Usart_SendString(NEO_USARTx,str);
+#endif
 						break;
 				default:Part_of_MS5837 = 1;cnt_MS5837 = 0;break;
 			}
