@@ -24,4 +24,5 @@
 ..\output\main.o: ..\Sensors\JY901\JY901.h
 ..\output\main.o: ..\Control\remote\remote.h
 ..\output\main.o: ..\Control\outer\outer.h
+..\output\main.o: ..\User\debug\debug.h
 ..\output\main.o: ..\User\systick\systick.h

@@ -23,3 +23,4 @@
 ..\output\loop.o: ..\Sensors\JY901\JY901.h
 ..\output\loop.o: ..\Control\remote\remote.h
 ..\output\loop.o: ..\Control\outer\outer.h
+..\output\loop.o: ..\User\debug\debug.h

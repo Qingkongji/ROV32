@@ -5,6 +5,7 @@
 #include "usart1.h"
 #include "inner.h"
 #include "outer.h"
+#include "debug.h"
 
 extern int cnt_MS5837;
 

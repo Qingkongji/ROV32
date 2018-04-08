@@ -24,3 +24,4 @@
 ..\output\stm32f10x_it.o: ..\Control\PID\PID.h
 ..\output\stm32f10x_it.o: ..\Control\remote\remote.h
 ..\output\stm32f10x_it.o: ..\Control\outer\outer.h
+..\output\stm32f10x_it.o: ..\User\debug\debug.h

@@ -23,3 +23,4 @@
 ..\output\ms5837.o: ..\Sensors\JY901\JY901.h
 ..\output\ms5837.o: ..\Control\remote\remote.h
 ..\output\ms5837.o: ..\Control\outer\outer.h
+..\output\ms5837.o: ..\User\debug\debug.h
