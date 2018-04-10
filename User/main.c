@@ -11,6 +11,7 @@
 #include "inner.h"
 #include "outer.h"
 #include "debug.h"
+#include "tim4.h"
 
 int main(void)
 {	
@@ -24,6 +25,7 @@ int main(void)
 	JY_USART3_Remap_Config();
 	TIM3_Init();
 	TIM8_Init();
+	LED_TIM4_Init();
 	Systick_Init();
 	Outer_Init();
 	Inner_Init();

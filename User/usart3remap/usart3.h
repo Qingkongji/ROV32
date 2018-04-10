@@ -1,7 +1,7 @@
 #ifndef _USART3_H_
 #define _USART3_H_
 
-#include "STM32F10x.h"
+#include "stm32f10x.h"
 
 // ´®¿Ú3-USART3ÖØÓ³Éä
 #define  JY_USARTx                   USART3
