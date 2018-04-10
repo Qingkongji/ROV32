@@ -12,19 +12,21 @@
 #include "outer.h"
 #include "debug.h"
 #include "mavlink.h"
+#include "tim4.h"
 
 int main(void)
 {	
 	
 	char str[100];
 	
-	/*初始化USART 115200 8-N-1，中断接收*/
+	/*鲁玫脢录禄炉USART 115200 8-N-1拢卢脰脨露脧陆脫脢脮*/
 	/*add comment*/
   USART1_Config();
 	I2C_GPIOconfig();
 	JY_USART3_Remap_Config();
 	TIM3_Init();
 	TIM8_Init();
+	LED_TIM4_Init();
 	Systick_Init();
 	Outer_Init();
 	Inner_Init();
