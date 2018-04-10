@@ -4,6 +4,9 @@ static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz;
 int cnt_MS5837;
 static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
 
+static mavlink_message_t msg;
+static uint8_t buf[BUF_LENGTH];
+
 void loop_cnt(void)
 {
 	cnt_200Hz++;
@@ -39,23 +42,31 @@ static void Loop_50Hz(void)
 //无人机数据发送以及自检
 static void Loop_20Hz(void)
 {
+	  int len;
 #ifdef DATASENDDEBUG
-	Usart_SendString( NEO_USARTx, "20Hz\n");
+	  Usart_SendString( NEO_USARTx, "20Hz\n");
 #endif
 	//进行无人机自检，并发送心跳包
-	  //mavlink_msg_heartbeat_pack(1,200,&msg,MAV_TYPE_SUBMARINE,MAV_AUTOPILOT_GENERIC,MAV_MODE_GUIDED_ARMED,0,MAV_STATE_ACTIVE);
-		//len = mavlink_msg_to_send_buffer(buf, &msg);   //这个编译器有一个问题就是，如果len只是简单幅值，那么是会认为len没有被使用
-		//Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
-	//发送深度传感器消息,if data has changed
-	if(MS5837_temp.depth != MS5837.depth){
+    
+	  mavlink_msg_heartbeat_pack(1,200,&msg,MAV_TYPE_SUBMARINE,MAV_AUTOPILOT_GENERIC,MAV_MODE_GUIDED_ARMED,0,MAV_STATE_ACTIVE);
+		len = mavlink_msg_to_send_buffer(buf, &msg);   //这个编译器有一个问题就是，如果len只是简单幅值，那么是会认为len没有被使用
+		Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
+	  //发送深度传感器消息,if data has changed
+	  if(MS5837_temp.depth != MS5837.depth){
 		//send the data
 		//mavlink_msg_sensor_data_pack(1,200,&msg,MS5837.depth,MS5837.temp,MS5837.pressure,)
 		
 		//update the data of deep sensor
-		MS5837_temp.depth = MS5837.depth;
-		MS5837_temp.offset = MS5837.offset;
-		MS5837_temp.pressure = MS5837.pressure;
-		MS5837_temp.temp = MS5837.temp;
+		    MS5837_temp.depth = MS5837.depth;
+		    MS5837_temp.offset = MS5837.offset;
+		    MS5837_temp.pressure = MS5837.pressure;
+		    MS5837_temp.temp = MS5837.temp;
+		
+		    mavlink_msg_ms5837_data_pack(1,MAVLINK_MSG_ID_MS5837_DATA,&msg,MS5837.depth,MS5837.temp,MS5837.pressure);
+		    len = mavlink_msg_to_send_buffer(buf, &msg);
+		    Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
+		
+
 	}
 	//发送JY901消息
 	
