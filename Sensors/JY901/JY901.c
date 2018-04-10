@@ -1,8 +1,9 @@
 #include "JY901.h"
 #include <string.h>
 
-struct SGyro 		JY901_Gyro;
-struct SAngle 	JY901_Angle;
+struct SAcc     JY901_Acc;    //加速度
+struct SGyro 		JY901_Gyro;   //角速度
+struct SAngle 	JY901_Angle;  //角度
 
 void GetDataFromJY901(unsigned char ucData)
 {
@@ -21,6 +22,9 @@ void GetDataFromJY901(unsigned char ucData)
 	{
 		switch(ucRxBuffer[1])
 		{
+			case 0x51:  
+				          //JY901_Acc.a[0] =()
+				          break;
 			case 0x52:	JY901_Gyro.w[0]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2]);      //俯仰
 			            JY901_Gyro.w[1]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4]);      //滚转
 									JY901_Gyro.w[2]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6]);      //偏航
@@ -29,6 +33,7 @@ void GetDataFromJY901(unsigned char ucData)
 			            JY901_Angle.Angle[1]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4]);     //滚转
 									JY901_Angle.Angle[2]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6]);     //偏航
 									break;
+			
 		}
 		ucRxCnt=0;
 	}
