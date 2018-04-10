@@ -90,12 +90,11 @@
  */
 static inline uint16_t mavlink_msg_get_send_buffer_length(const mavlink_message_t* msg)
 {
-	
-	  	uint16_t signature_len = (msg->incompat_flags & MAVLINK_IFLAG_SIGNED)?MAVLINK_SIGNATURE_BLOCK_LEN:0;
+	uint16_t signature_len;
 	if (msg->magic == MAVLINK_STX_MAVLINK1) {
 		return msg->len + MAVLINK_CORE_HEADER_MAVLINK1_LEN+1 + 2;
 	}
-  
+  signature_len = (msg->incompat_flags & MAVLINK_IFLAG_SIGNED)?MAVLINK_SIGNATURE_BLOCK_LEN:0;
 	return msg->len + MAVLINK_NUM_NON_PAYLOAD_BYTES + signature_len;
 }
 
@@ -244,9 +243,9 @@ _MAV_PUT_ARRAY(int64_t,  i64)
 _MAV_PUT_ARRAY(float,    f)
 _MAV_PUT_ARRAY(double,   d)
 
-#define _MAV_RETURN_char(msg, wire_offset)             (char)_MAV_PAYLOAD(msg)[wire_offset]
-#define _MAV_RETURN_int8_t(msg, wire_offset)   (int8_t)_MAV_PAYLOAD(msg)[wire_offset]
-#define _MAV_RETURN_uint8_t(msg, wire_offset) (uint8_t)_MAV_PAYLOAD(msg)[wire_offset]
+#define _MAV_RETURN_char(msg, wire_offset)             ( char)_MAV_PAYLOAD(msg)[wire_offset]
+#define _MAV_RETURN_int8_t(msg, wire_offset)   ( int8_t)_MAV_PAYLOAD(msg)[wire_offset]
+#define _MAV_RETURN_uint8_t(msg, wire_offset) ( uint8_t)_MAV_PAYLOAD(msg)[wire_offset]
 
 #if MAVLINK_NEED_BYTE_SWAP
 #define _MAV_MSG_RETURN_TYPE(TYPE, SIZE) \

@@ -11,6 +11,7 @@
 #include "inner.h"
 #include "outer.h"
 #include "debug.h"
+#include "mavlink.h"
 
 int main(void)
 {	

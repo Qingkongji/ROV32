@@ -1,13 +1,12 @@
 #pragma once
 
+#define inline __INLINE
+
 #if defined(MAVLINK_USE_CXX_NAMESPACE)
 namespace mavlink {
 #elif defined(__cplusplus)
 extern "C" {
 #endif
-	
-	
-#define inline  __INLINE
 
 // Visual Studio versions before 2010 don't have stdint.h, so we just error out.
 #if (defined _MSC_VER) && (_MSC_VER < 1600)
