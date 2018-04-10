@@ -1,0 +1,6 @@
+-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\Libraries\CMSIS -I..\User -I..\Libraries\FWlib\inc -I..\Sensors\ms5837 -I..\User\iic -I..\User\usart1 -I..\User\usart3remap -I..\Sensors\JY901 -I..\User\General_timx -I..\User\Adanved_timx -I..\Control\PID -I..\User\systick -I..\Control\loop -I..\Control\outer -I..\Control\inner -I..\Control\remote -I..\User\debug
+-I C:\Users\duan\Desktop\codeFile\ROV\ROV32-1\Project\RTE
+-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\2.2.0\Device\Include
+-I C:\Keil_v5\ARM\CMSIS\Include
+-D__UVISION_VERSION="514" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DDEBUG
+-o ..\output\loop.o --omf_browse ..\output\loop.crf --depend ..\output\loop.d "..\Control\loop\loop.c"

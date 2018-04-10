@@ -86,22 +86,22 @@ struct STime
 };
 struct SAcc
 {
-	short a[3];
+	short a[3];  //x,y,z acceleration 
 	short T;
 };
 struct SGyro
 {
-	short w[3];
+	short w[3];  //angular velocity
 	short T;
 };
 struct SAngle
 {
-	short Angle[3];
+	short Angle[3];  //angle
 	short T;
 };
 struct SMag
 {
-	short h[3];
+	short h[3];  //magnetometer
 	short T;
 };
 
@@ -131,6 +131,7 @@ struct SGPSV
 
 extern struct SGyro   JY901_Gyro;
 extern struct SAngle  JY901_Angle;
+extern struct SAcc    JY901_Acc;    //º”ÀŸ∂»
 
 
 void GetDataFromJY901(unsigned char ucData);
