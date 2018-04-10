@@ -18,8 +18,7 @@ namespace mavlink {
 #ifdef __GNUC__
   #define MAVPACKED( __Declaration__ ) __Declaration__ __attribute__((packed))
 #else
-	#define MAVPACKED( __Declaration__ ) __Declaration__
-  //#define MAVPACKED( __Declaration__ ) __pragma( pack(push, 1) ) __Declaration__ __pragma( pack(pop) )
+  #define MAVPACKED( __Declaration__ ) __Declaration__
 #endif
 
 #ifndef MAVLINK_MAX_PAYLOAD_LEN

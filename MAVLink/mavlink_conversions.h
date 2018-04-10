@@ -146,9 +146,10 @@ MAVLINK_HELPER void mavlink_euler_to_quaternion(float roll, float pitch, float y
  */
 MAVLINK_HELPER void mavlink_dcm_to_quaternion(const float dcm[3][3], float quaternion[4])
 {
-		int dcm_j,dcm_k;
-		float s;
     float tr = dcm[0][0] + dcm[1][1] + dcm[2][2];
+	  int dcm_j;
+  	int dcm_k;
+	  float s;
     if (tr > 0.0f) {
         float s = sqrtf(tr + 1.0f);
         quaternion[0] = s * 0.5f;

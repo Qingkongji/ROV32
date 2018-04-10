@@ -11,6 +11,7 @@
 #include "inner.h"
 #include "outer.h"
 #include "debug.h"
+#include "mavlink.h"
 #include "tim4.h"
 
 int main(void)
@@ -18,7 +19,7 @@ int main(void)
 	
 	char str[100];
 	
-	/*初始化USART 115200 8-N-1，中断接收*/
+	/*鲁玫脢录禄炉USART 115200 8-N-1拢卢脰脨露脧陆脫脢脮*/
 	/*add comment*/
   USART1_Config();
 	I2C_GPIOconfig();
