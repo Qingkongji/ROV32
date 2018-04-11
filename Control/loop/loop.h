@@ -6,6 +6,9 @@
 #include "inner.h"
 #include "outer.h"
 #include "debug.h"
+#include "mavlink.h"
+
+#define BUF_LENGTH 2048
 
 extern int cnt_MS5837;
 

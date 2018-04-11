@@ -25,7 +25,6 @@
 ..\output\main.o: ..\Control\remote\remote.h
 ..\output\main.o: ..\Control\outer\outer.h
 ..\output\main.o: ..\User\debug\debug.h
-..\output\main.o: ..\User\systick\systick.h
 ..\output\main.o: ..\Mavlink\ROV\mavlink.h
 ..\output\main.o: ..\Mavlink\ROV\version.h
 ..\output\main.o: ..\Mavlink\ROV\ROV.h
@@ -207,4 +206,5 @@
 ..\output\main.o: ..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h
 ..\output\main.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\main.o: ..\Mavlink\ROV\../mavlink_get_info.h
+..\output\main.o: ..\User\systick\systick.h
 ..\output\main.o: ..\User\General_timx\tim4.h
