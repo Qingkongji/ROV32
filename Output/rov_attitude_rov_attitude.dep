@@ -22,7 +22,7 @@ I (..\User\General_timx\tim3.h)(0x5AA5D420)
 I (..\User\Adanved_timx\tim8.h)(0x5A6BDFB1)
 I (..\Control\PID\PID.h)(0x5ACF0BA3)
 I (..\Sensors\JY901\JY901.h)(0x5ACC28D9)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 I (..\Control\outer\outer.h)(0x5ACF10E5)
 I (..\User\debug\debug.h)(0x5ACC28D9)
 I (..\Mavlink\ROV\mavlink.h)(0x5ACCAAA8)
@@ -231,7 +231,7 @@ I (..\Control\inner\inner.h)(0x5ACF0D99)
 I (..\User\General_timx\tim3.h)(0x5AA5D420)
 I (..\User\Adanved_timx\tim8.h)(0x5A6BDFB1)
 I (..\Control\PID\PID.h)(0x5ACF0BA3)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 I (..\Control\outer\outer.h)(0x5ACF10E5)
 I (..\User\debug\debug.h)(0x5ACC28D9)
 I (..\Mavlink\ROV\mavlink.h)(0x5ACCAAA8)
@@ -821,7 +821,7 @@ I (..\User\General_timx\tim3.h)(0x5AA5D420)
 I (..\User\Adanved_timx\tim8.h)(0x5A6BDFB1)
 I (..\Control\PID\PID.h)(0x5ACF0BA3)
 I (..\Sensors\JY901\JY901.h)(0x5ACC28D9)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 I (..\Control\outer\outer.h)(0x5ACF10E5)
 I (..\User\debug\debug.h)(0x5ACC28D9)
 I (..\Mavlink\ROV\mavlink.h)(0x5ACCAAA8)
@@ -1209,7 +1209,7 @@ I (..\Mavlink\ROV\../common/./mavlink_msg_param_ext_set.h)(0x5A6AF5A7)
 I (..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h)(0x5A6AF5A7)
 I (..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h)(0x5ACCAAA8)
 I (..\Mavlink\ROV\../mavlink_get_info.h)(0x5A6AF5A7)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 F (..\Control\inner\inner.c)(0x5ACF11F3)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\Libraries\CMSIS -I..\User -I..\Libraries\FWlib\inc -I..\Sensors\ms5837 -I..\User\iic -I..\User\usart1 -I..\User\usart3remap -I..\Sensors\JY901 -I..\User\General_timx -I..\User\Adanved_timx -I..\Control\PID -I..\User\systick -I..\Control\loop -I..\Control\outer -I..\Control\inner -I..\Control\remote -I..\User\debug -I..\Mavlink\ROV-I F:\ROV32-latest\Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DDEBUG-o ..\output\inner.o --omf_browse ..\output\inner.crf --depend ..\output\inner.d)
 I (..\Control\inner\inner.h)(0x5ACF0D99)
 I (..\Libraries\CMSIS\stm32f10x.h)(0x57C78855)
@@ -1414,9 +1414,9 @@ I (..\Mavlink\ROV\../common/./mavlink_msg_param_ext_set.h)(0x5A6AF5A7)
 I (..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h)(0x5A6AF5A7)
 I (..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h)(0x5ACCAAA8)
 I (..\Mavlink\ROV\../mavlink_get_info.h)(0x5A6AF5A7)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
-F (..\Control\remote\remote.c)(0x5ACF0E5E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\Libraries\CMSIS -I..\User -I..\Libraries\FWlib\inc -I..\Sensors\ms5837 -I..\User\iic -I..\User\usart1 -I..\User\usart3remap -I..\Sensors\JY901 -I..\User\General_timx -I..\User\Adanved_timx -I..\Control\PID -I..\User\systick -I..\Control\loop -I..\Control\outer -I..\Control\inner -I..\Control\remote -I..\User\debug -I..\Mavlink\ROV-I F:\ROV32-latest\Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DDEBUG-o ..\output\remote.o --omf_browse ..\output\remote.crf --depend ..\output\remote.d)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
+F (..\Control\remote\remote.c)(0x5ACF1C5B)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork -I..\Libraries\CMSIS -I..\User -I..\Libraries\FWlib\inc -I..\Sensors\ms5837 -I..\User\iic -I..\User\usart1 -I..\User\usart3remap -I..\Sensors\JY901 -I..\User\General_timx -I..\User\Adanved_timx -I..\Control\PID -I..\User\systick -I..\Control\loop -I..\Control\outer -I..\Control\inner -I..\Control\remote -I..\User\debug -I..\Mavlink\ROV-I F:\ROV32-latest\Project\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F1xx_DFP\1.0.2\Device\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="514" -DSTM32F10X_HD -DSTM32F10X_HD -DUSE_STDPERIPH_DRIVER -DDEBUG-o ..\output\remote.o --omf_browse ..\output\remote.crf --depend ..\output\remote.d)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 I (..\Libraries\CMSIS\stm32f10x.h)(0x57C78855)
 I (..\Libraries\CMSIS\core_cm3.h)(0x5A697218)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5475F300)
@@ -1641,7 +1641,7 @@ I (..\User\General_timx\tim3.h)(0x5AA5D420)
 I (..\User\Adanved_timx\tim8.h)(0x5A6BDFB1)
 I (..\Control\PID\PID.h)(0x5ACF0BA3)
 I (..\Sensors\JY901\JY901.h)(0x5ACC28D9)
-I (..\Control\remote\remote.h)(0x5ACF0F18)
+I (..\Control\remote\remote.h)(0x5ACF1C5B)
 I (..\Control\outer\outer.h)(0x5ACF10E5)
 I (..\User\debug\debug.h)(0x5ACC28D9)
 I (..\Mavlink\ROV\mavlink.h)(0x5ACCAAA8)

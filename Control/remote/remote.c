@@ -20,3 +20,9 @@ void Updata_set(void)
 	Reset_set(&pidData_deep, remote_h);
 	Reset_set(&pidData_yaw_angle, remote_yaw);
 }
+
+void Decode(void)
+{
+	
+}
+

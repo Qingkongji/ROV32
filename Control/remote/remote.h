@@ -12,6 +12,7 @@ extern signed int remote_z;
 extern signed int remote_yaw;
 
 void Updata_set(void);
+void Decode(void);
 
 #endif
 
