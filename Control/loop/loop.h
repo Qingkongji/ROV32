@@ -7,6 +7,7 @@
 #include "outer.h"
 #include "debug.h"
 #include "mavlink.h"
+#include "remote.h"
 
 #define BUF_LENGTH 2048
 

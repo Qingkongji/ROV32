@@ -52,6 +52,11 @@ void PIDdataUpdate(struct PID* pidData)
 	
 }
 
+void Reset_set(struct PID* pidData, int32_t Newset)
+{
+	pidData->set = Newset;
+}
+
 void ResetI(struct PID* pidData)
 {
 	pidData->I = 0;

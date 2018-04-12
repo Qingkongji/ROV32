@@ -23,6 +23,7 @@
 ..\output\stm32f10x_it.o: ..\User\Adanved_timx\tim8.h
 ..\output\stm32f10x_it.o: ..\Control\PID\PID.h
 ..\output\stm32f10x_it.o: ..\Control\remote\remote.h
+..\output\stm32f10x_it.o: ..\Control\inner\inner.h
 ..\output\stm32f10x_it.o: ..\Control\outer\outer.h
 ..\output\stm32f10x_it.o: ..\User\debug\debug.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\mavlink.h

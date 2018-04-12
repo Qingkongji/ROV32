@@ -1,6 +1,6 @@
 #include "loop.h"
 
-static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz;
+static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz,cnt_1Hz;
 int cnt_MS5837;
 static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
 
@@ -14,13 +14,14 @@ void loop_cnt(void)
 	cnt_50Hz++;
 	cnt_20Hz++;
 	cnt_10Hz++;
+	cnt_1Hz++;
 	cnt_MS5837++;
 }	
 
-//更新传感器存储数据
+//更新遥控信号以及传感器存储数据
 static void Loop_200Hz(void)
 {
-	
+	Updata_set();
 	Usart_SendString( NEO_USARTx, "200Hz");
 }
 
@@ -71,11 +72,18 @@ static void Loop_20Hz(void)
 	//发送JY901消息
 	
 }
+
 //MS5837 Deep Sensor Data collection
 static void Loop_10Hz(void)
 {
 	MS5837_Read_From_Part();
 }
+
+//向Nanopi发送心跳包
+static void Loop_1Hz(void)
+{
+	
+}	
 
 void ROV_Loop(void)
 {
@@ -107,6 +115,12 @@ void ROV_Loop(void)
 	{
 		Loop_10Hz();
 		cnt_10Hz = 0;
+	}
+	
+	if( cnt_1Hz >= 1000)
+	{
+		Loop_1Hz();
+		cnt_1Hz = 0;
 	}
 }
 

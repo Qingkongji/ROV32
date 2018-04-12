@@ -28,6 +28,7 @@
 #include "usart1.h"
 #include "JY901.h"
 #include "loop.h"
+#include "remote.h"
 /** @addtogroup STM32F10x_StdPeriph_Template
   * @{
   */

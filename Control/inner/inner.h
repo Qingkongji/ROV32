@@ -9,6 +9,13 @@
 #include "JY901.h"
 #include "remote.h"
 
+extern struct PID pidData_pitch_w;
+extern struct PID pidData_roll_w;
+extern struct PID pidData_yaw_w;
+
+extern struct PID pidData_deep;
+
+
 void MOTOR_UR(signed int v,unsigned int direction);
 void MOTOR_UL(signed int v,unsigned int direction);
 void MOTOR_DL(signed int v,unsigned int direction);

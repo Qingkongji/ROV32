@@ -22,6 +22,7 @@
 ..\output\ms5837.o: ..\Control\PID\PID.h
 ..\output\ms5837.o: ..\Sensors\JY901\JY901.h
 ..\output\ms5837.o: ..\Control\remote\remote.h
+..\output\ms5837.o: ..\Control\inner\inner.h
 ..\output\ms5837.o: ..\Control\outer\outer.h
 ..\output\ms5837.o: ..\User\debug\debug.h
 ..\output\ms5837.o: ..\Mavlink\ROV\mavlink.h

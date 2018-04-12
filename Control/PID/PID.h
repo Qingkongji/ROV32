@@ -29,6 +29,7 @@ int PID_PITCH(int pitch);
 
 void PIDdataInit(struct PID* pidData,uint16_t kp,uint16_t ki,uint16_t kd,int32_t imax,int32_t outmax);
 void PIDdataUpdate(struct PID* pidData);
+void Reset_set(struct PID* pidData, int32_t Newset);
 void ResetI(struct PID* pidData);
 void GetP(struct PID* pidData);
 void GetI(struct PID* pidData);

@@ -131,10 +131,10 @@ void Inner_Loop(void)
 	out_deep = pidData_deep.out/50;
 	
 	//µç»úÊä³ö
-	MOTOR_UL(remote_x+remote_y+remote_yaw+1*out_yaw_w,direction_ur);
+	MOTOR_UL(remote_x+remote_y+1*out_yaw_w,direction_ur);
 	MOTOR_UR(remote_x-remote_y-1*out_yaw_w,direction_ul);
 	MOTOR_DL(remote_x-remote_y+1*out_yaw_w,direction_dl);
-	MOTOR_DR(remote_x+remote_y-remote_yaw-1*out_yaw_w,direction_dr);
+	MOTOR_DR(remote_x+remote_y-1*out_yaw_w,direction_dr);
 	MOTOR_1(remote_z+out_deep + 1*out_roll_w + 1*out_pitch_w,direction_1);
 	MOTOR_2(remote_z+out_deep - 1*out_roll_w + 1*out_pitch_w,direction_2);
 	MOTOR_3(remote_z+out_deep - 2*out_pitch_w,direction_3);

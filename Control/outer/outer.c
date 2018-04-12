@@ -33,5 +33,9 @@ void Outer_Loop(void)
 	out_pitch_angle=pidData_pitch_angle.out;
 	out_roll_angle=pidData_roll_angle.out;
 	out_yaw_angle=pidData_yaw_angle.out;
+	
+	Reset_set(&pidData_pitch_w, out_pitch_angle);
+	Reset_set(&pidData_roll_w, out_roll_angle);
+	Reset_set(&pidData_yaw_w, out_yaw_angle);
 }
 

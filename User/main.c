@@ -19,7 +19,7 @@ int main(void)
 	
 	char str[100];
 	
-	/*³õÊ¼»¯USART 115200 8-N-1£¬ÖÐ¶Ï½ÓÊÕ*/
+	/*初始化USART 115200 8-N-1，中断接收*/
 	/*add comment*/
   USART1_Config();
 	I2C_GPIOconfig();
