@@ -22,7 +22,7 @@ void loop_cnt(void)
 static void Loop_200Hz(void)
 {
 	Updata_set();
-	Usart_SendString( NEO_USARTx, "200Hz");
+	//Usart_SendString( NEO_USARTx, "200Hz");
 }
 
 //姿态内环控制
@@ -49,9 +49,7 @@ static void Loop_20Hz(void)
 #endif
 	//进行无人机自检，并发送心跳包
     
-	  mavlink_msg_heartbeat_pack(1,200,&msg,MAV_TYPE_SUBMARINE,MAV_AUTOPILOT_GENERIC,MAV_MODE_GUIDED_ARMED,0,MAV_STATE_ACTIVE);
-		len = mavlink_msg_to_send_buffer(buf, &msg);   //这个编译器有一个问题就是，如果len只是简单幅值，那么是会认为len没有被使用
-		Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
+	 
 	  //发送深度传感器消息,if data has changed
 	  if(MS5837_temp.depth != MS5837.depth){
 		//send the data
@@ -82,7 +80,10 @@ static void Loop_10Hz(void)
 //向Nanopi发送心跳包
 static void Loop_1Hz(void)
 {
-	
+	int len = 0;
+	mavlink_msg_heartbeat_pack(1,200,&msg,MAV_TYPE_SUBMARINE,MAV_AUTOPILOT_GENERIC,MAV_MODE_GUIDED_ARMED,0,MAV_STATE_ACTIVE);
+	len = mavlink_msg_to_send_buffer(buf, &msg);   //这个编译器有一个问题就是，如果len只是简单幅值，那么是会认为len没有被使用
+	Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
 }	
 
 void ROV_Loop(void)

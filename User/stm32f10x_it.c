@@ -150,10 +150,20 @@ void SysTick_Handler(void)
 void NEO_USART_IRQHandler(void)
 {
   uint8_t ucTemp;
+	mavlink_message_t msg;
+	mavlink_status_t status;
+	//Usart_SendString( NEO_USARTx, "message received\n");
 	if(USART_GetITStatus(NEO_USARTx,USART_IT_RXNE)!=RESET)
 	{		
+		//  
 		ucTemp = USART_ReceiveData(NEO_USARTx);
-    USART_SendData(NEO_USARTx,ucTemp); 
+		//Usart_SendString( NEO_USARTx, "message really received\n");
+		if(mavlink_parse_char(MAVLINK_COMM_0,ucTemp,&msg,&status)){
+			Usart_SendString( NEO_USARTx, "mavlink message received\n");
+		}
+    //USART_SendData(NEO_USARTx,ucTemp);
+		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+		
 	}	 
 		
 }
