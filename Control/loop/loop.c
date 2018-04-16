@@ -18,17 +18,18 @@ void loop_cnt(void)
 	cnt_MS5837++;
 }	
 
-//更新遥控信号以及传感器存储数据
+
+//姿态内环控制
 static void Loop_200Hz(void)
 {
-	Updata_set();
+	Inner_Loop();
 	//Usart_SendString( NEO_USARTx, "200Hz");
 }
 
-//姿态内环控制
+//更新遥控信号以及传感器存储数据
 static void Loop_100Hz(void)
 {
-	Inner_Loop();
+	Updata_set();
 }
 
 //姿态外环控制

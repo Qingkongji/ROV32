@@ -132,8 +132,8 @@ void Inner_Loop(void)
 	
 	//µç»úÊä³ö
 	MOTOR_UL(remote_x+remote_y+1*out_yaw_w,direction_ur);
-	MOTOR_UR(remote_x-remote_y-1*out_yaw_w,direction_ul);
-	MOTOR_DL(remote_x-remote_y+1*out_yaw_w,direction_dl);
+	MOTOR_UR(remote_x-remote_y,direction_ul);
+	MOTOR_DL(remote_x-remote_y,direction_dl);
 	MOTOR_DR(remote_x+remote_y-1*out_yaw_w,direction_dr);
 	MOTOR_1(remote_z+out_deep + 1*out_roll_w + 1*out_pitch_w,direction_1);
 	MOTOR_2(remote_z+out_deep - 1*out_roll_w + 1*out_pitch_w,direction_2);
