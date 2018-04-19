@@ -161,9 +161,6 @@ void NEO_USART_IRQHandler(void)
 		if(mavlink_parse_char(MAVLINK_COMM_0,ucTemp,&msg,&status)){
 			Usart_SendString( NEO_USARTx, "mavlink message received\n");
 		}
-    //USART_SendData(NEO_USARTx,ucTemp);
-		USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-		
 	}	 
 		
 }
