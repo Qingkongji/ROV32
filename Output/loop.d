@@ -24,7 +24,6 @@
 ..\output\loop.o: ..\Control\remote\remote.h
 ..\output\loop.o: ..\Control\inner\inner.h
 ..\output\loop.o: ..\Control\outer\outer.h
-..\output\loop.o: ..\User\debug\debug.h
 ..\output\loop.o: ..\Mavlink\ROV\mavlink.h
 ..\output\loop.o: ..\Mavlink\ROV\version.h
 ..\output\loop.o: ..\Mavlink\ROV\ROV.h
@@ -206,3 +205,4 @@
 ..\output\loop.o: ..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h
 ..\output\loop.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\loop.o: ..\Mavlink\ROV\../mavlink_get_info.h
+..\output\loop.o: ..\User\debug\debug.h

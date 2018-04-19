@@ -25,7 +25,6 @@
 ..\output\stm32f10x_it.o: ..\Control\remote\remote.h
 ..\output\stm32f10x_it.o: ..\Control\inner\inner.h
 ..\output\stm32f10x_it.o: ..\Control\outer\outer.h
-..\output\stm32f10x_it.o: ..\User\debug\debug.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\mavlink.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\version.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\ROV.h
@@ -207,3 +206,4 @@
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\stm32f10x_it.o: ..\Mavlink\ROV\../mavlink_get_info.h
+..\output\stm32f10x_it.o: ..\User\debug\debug.h

@@ -152,6 +152,7 @@ void NEO_USART_IRQHandler(void)
   uint8_t ucTemp;
 	mavlink_message_t msg;
 	mavlink_status_t status;
+	mavlink_joystick_control_t joystick_control;
 	//Usart_SendString( NEO_USARTx, "message received\n");
 	if(USART_GetITStatus(NEO_USARTx,USART_IT_RXNE)!=RESET)
 	{		
@@ -159,6 +160,7 @@ void NEO_USART_IRQHandler(void)
 		ucTemp = USART_ReceiveData(NEO_USARTx);
 		//Usart_SendString( NEO_USARTx, "message really received\n");
 		if(mavlink_parse_char(MAVLINK_COMM_0,ucTemp,&msg,&status)){
+			Decode(&msg, &joystick_control);
 			Usart_SendString( NEO_USARTx, "mavlink message received\n");
 		}
 	}	 
