@@ -4,9 +4,9 @@ struct PID pidData_pitch_angle;
 struct PID pidData_roll_angle;
 struct PID pidData_yaw_angle;
 
-int32_t out_pitch_angle;
-int32_t out_roll_angle;
-int32_t out_yaw_angle;
+float out_pitch_angle;
+float out_roll_angle;
+float out_yaw_angle;
 
 void Outer_Init(void)
 {
@@ -17,10 +17,10 @@ void Outer_Init(void)
 
 void Outer_Loop(void)
 {
-	//获取传感器数据
-	pidData_pitch_angle.feedback=JY901_Angle.Angle[0];
-	pidData_roll_angle.feedback=JY901_Angle.Angle[1];
-	pidData_yaw_angle.feedback=JY901_Angle.Angle[2];
+	//获取传感器数据,单位为度
+	pidData_pitch_angle.feedback = (float)JY901_Angle.Angle[0]/32768*180;
+	pidData_roll_angle.feedback = (float)JY901_Angle.Angle[1]/32768*180;
+	pidData_yaw_angle.feedback = (float)JY901_Angle.Angle[2]/32768*180;
 	//更新PID数据
 	PIDdataUpdate(&pidData_pitch_angle);
 	PIDdataUpdate(&pidData_roll_angle);

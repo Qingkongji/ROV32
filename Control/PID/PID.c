@@ -13,13 +13,13 @@ float I_YAW=0.15;
 float D_YAW=0.0;
 
 /* 约束条件，用于抗饱和 */
-int32_t constrain_int32(int32_t amt, int32_t low, int32_t high) 
+int32_t constrain_int32(float amt, int32_t low, int32_t high) 
 {
 	return ((amt)<(low)?(low):((amt)>(high)?(high):(amt)));
 }
 
 /* 设置PID参数 */
-void PIDdataInit(struct PID* pidData,uint16_t kp,uint16_t ki,uint16_t kd,int32_t imax,int32_t outmax)
+void PIDdataInit(struct PID* pidData,float kp,float ki,float kd,int32_t imax,int32_t outmax)
 {
 	pidData->Imax=imax;
 	pidData->outmax=outmax;
@@ -52,7 +52,7 @@ void PIDdataUpdate(struct PID* pidData)
 	
 }
 
-void Reset_set(struct PID* pidData, int32_t Newset)
+void Reset_set(struct PID* pidData, float Newset)
 {
 	pidData->set = Newset;
 }
