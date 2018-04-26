@@ -11,8 +11,9 @@ int32_t out_roll_w;
 int32_t out_yaw_w;
 int32_t out_deep;
 
-unsigned int direction_ur,direction_ul,direction_dr,direction_dl;
-unsigned int direction_1,direction_2,direction_3;
+//正桨为1，反桨为0
+unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 1,direction_dl = 0;
+unsigned int direction_1 = 0,direction_2 = 1,direction_3 = 1;
 
 void MOTOR_UR(signed int v,unsigned int direction)    //TIM3_CH1    UP-RIGHT
 {
