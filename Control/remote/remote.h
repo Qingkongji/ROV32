@@ -13,7 +13,7 @@ extern float remote_z;
 extern float remote_yaw;
 
 void Updata_set(void);
-void Decode(const mavlink_message_t* msg, mavlink_joystick_control_t* joystick_control);
+void Decode(const mavlink_message_t* msg);
 
 #endif
 

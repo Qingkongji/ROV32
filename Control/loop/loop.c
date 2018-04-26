@@ -48,9 +48,6 @@ static void Loop_20Hz(void)
 #ifdef DATASENDDEBUG
 	  Usart_SendString( NEO_USARTx, "20Hz\n");
 #endif
-	//进行无人机自检，并发送心跳包
-    
-	 
 	  //发送深度传感器消息,if data has changed
 	  if(MS5837_temp.depth != MS5837.depth){
 		//send the data
