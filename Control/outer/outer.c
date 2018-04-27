@@ -30,9 +30,9 @@ void Outer_Loop(void)
 	GetPID_OUT(&pidData_roll_angle);
 	GetPID_OUT(&pidData_yaw_angle);
 	//Íâ»·PIDÊä³ö
-	out_pitch_angle=pidData_pitch_angle.out;
-	out_roll_angle=pidData_roll_angle.out;
-	out_yaw_angle=pidData_yaw_angle.out;
+	out_pitch_angle=pidData_pitch_angle.out/100;
+	out_roll_angle=pidData_roll_angle.out/100;
+	out_yaw_angle=pidData_yaw_angle.out/100;
 	
 	Reset_set(&pidData_pitch_w, out_pitch_angle);
 	Reset_set(&pidData_roll_w, out_roll_angle);

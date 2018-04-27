@@ -28,6 +28,9 @@ int main(void)
 	TIM8_Init();
 	LED_TIM4_Init();
 	Systick_Init();
+	I2C_delay_ms(1000);
+	I2C_delay_ms(1000);
+	I2C_delay_ms(1000);
 	Outer_Init();
 	Inner_Init();
 	
