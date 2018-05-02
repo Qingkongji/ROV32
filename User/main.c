@@ -35,13 +35,13 @@ int main(void)
 	sprintf(str,"This is the debug edition\n");
 	Usart_SendString(NEO_USARTx,str);
 #endif
-/*
+
 	while(!(MS5837_CheckDevice()))
 	{
 		sprintf(str,"MS5837 disconnected\n");
 		Usart_SendString(NEO_USARTx,str);
 	}
-*/	
+
 	sprintf(str,"MS5837 connected\n");
 	Usart_SendString(NEO_USARTx,str);
 
