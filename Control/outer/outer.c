@@ -21,6 +21,13 @@ void Outer_Loop(void)
 	pidData_pitch_angle.feedback = (float)JY901_Angle.Angle[0]/32768*180;
 	pidData_roll_angle.feedback = (float)JY901_Angle.Angle[1]/32768*180;
 	pidData_yaw_angle.feedback = (float)JY901_Angle.Angle[2]/32768*180;
+	//处理角度以防止临界值即0与359度之间
+	if(pidData_pitch_angle.feedback >= 180)
+		pidData_pitch_angle.feedback -= 360.0;
+	if(pidData_roll_angle.feedback >= 180)
+		pidData_roll_angle.feedback -= 360.0;
+	if(pidData_yaw_angle.feedback >= (180+remote_yaw))
+		pidData_yaw_angle.feedback -= 360.0;
 	//更新PID数据
 	PIDdataUpdate(&pidData_pitch_angle);
 	PIDdataUpdate(&pidData_roll_angle);

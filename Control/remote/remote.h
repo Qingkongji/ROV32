@@ -12,6 +12,7 @@ extern float remote_y;
 extern float remote_z;
 extern float remote_yaw;
 
+void remote_init(void);
 void Updata_set(void);
 void Decode(const mavlink_message_t* msg);
 

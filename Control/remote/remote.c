@@ -16,7 +16,20 @@ float remote_yaw;
 mavlink_joystick_control_t joystick_control;
 mavlink_heartbeat_t heartbeat;
 
-
+void remote_init(void)
+{
+	remote_x = 0;
+	remote_y = 0;
+	remote_z = 0;
+	remote_yaw = 0;
+	remote_pitch_angle = 0;
+	remote_roll_angle = 0;
+	remote_yaw_angle = 0;
+	remote_pitch_w = 0;
+	remote_roll_w = 0;
+	remote_yaw_w = 0;
+}
+	
 void Updata_set(void)
 {
 	Reset_set(&pidData_deep, remote_z);

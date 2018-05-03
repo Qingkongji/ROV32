@@ -44,32 +44,30 @@ static void Loop_50Hz(void)
 //无人机数据发送以及自检
 static void Loop_20Hz(void)
 {
-	  int len;
+	int len;
 	
 #ifdef JY901DEBUG
-	  char str[100];
+	char str[100];
 #endif
 	
 #ifdef DATASENDDEBUG
-	  Usart_SendString( NEO_USARTx, "20Hz\n");
+	Usart_SendString( NEO_USARTx, "20Hz\n");
 #endif
-	//进行无人机自检，并发送心跳包
+//进行无人机自检，并发送心跳包
     
 	 
-	  //发送深度传感器消息,if depth has changed
-	  //经过测试，MS5837能够读取传感器的值并进行发送
-		 len = MS5837_Send_MAVLink_Message(&msg,buf);
+//发送深度传感器消息,if depth has changed
+//经过测试，MS5837能够读取传感器的值并进行发送
+	len = MS5837_Send_MAVLink_Message(&msg,buf);
 	
-	  //发送JY901消息
-	  //经过测试，JY901能够正常读取传感器的值并进行发送
+//发送JY901消息
+//经过测试，JY901能够正常读取传感器的值并进行发送
 #ifdef JY901DEBUG		
-    sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
-		Usart_SendString(NEO_USARTx,str);
+	sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
+	Usart_SendString(NEO_USARTx,str);
 #endif
-     len = JY901_Send_MAVLink_Message(&msg,buf);
+	len = JY901_Send_MAVLink_Message(&msg,buf);
     
-		 
-	
 }
 
 //MS5837 Deep Sensor Data collection

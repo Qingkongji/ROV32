@@ -31,6 +31,7 @@ int main(void)
 	I2C_delay_ms(1000);
 	I2C_delay_ms(1000);
 	I2C_delay_ms(1000);
+	remote_init();
 	Outer_Init();
 	Inner_Init();
 	
