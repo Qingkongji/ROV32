@@ -21,9 +21,6 @@
 ..\output\ms5837.o: ..\User\Adanved_timx\tim8.h
 ..\output\ms5837.o: ..\Control\PID\PID.h
 ..\output\ms5837.o: ..\Sensors\JY901\JY901.h
-..\output\ms5837.o: ..\Control\remote\remote.h
-..\output\ms5837.o: ..\Control\inner\inner.h
-..\output\ms5837.o: ..\Control\outer\outer.h
 ..\output\ms5837.o: ..\Mavlink\ROV\mavlink.h
 ..\output\ms5837.o: ..\Mavlink\ROV\version.h
 ..\output\ms5837.o: ..\Mavlink\ROV\ROV.h
@@ -206,3 +203,6 @@
 ..\output\ms5837.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\ms5837.o: ..\Mavlink\ROV\../mavlink_get_info.h
 ..\output\ms5837.o: ..\User\debug\debug.h
+..\output\ms5837.o: ..\Control\remote\remote.h
+..\output\ms5837.o: ..\Control\inner\inner.h
+..\output\ms5837.o: ..\Control\outer\outer.h

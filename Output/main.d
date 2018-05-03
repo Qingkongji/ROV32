@@ -22,9 +22,6 @@
 ..\output\main.o: ..\User\Adanved_timx\tim8.h
 ..\output\main.o: ..\Control\PID\PID.h
 ..\output\main.o: ..\Sensors\JY901\JY901.h
-..\output\main.o: ..\Control\remote\remote.h
-..\output\main.o: ..\Control\inner\inner.h
-..\output\main.o: ..\Control\outer\outer.h
 ..\output\main.o: ..\Mavlink\ROV\mavlink.h
 ..\output\main.o: ..\Mavlink\ROV\version.h
 ..\output\main.o: ..\Mavlink\ROV\ROV.h
@@ -207,5 +204,8 @@
 ..\output\main.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\main.o: ..\Mavlink\ROV\../mavlink_get_info.h
 ..\output\main.o: ..\User\debug\debug.h
+..\output\main.o: ..\Control\remote\remote.h
+..\output\main.o: ..\Control\inner\inner.h
+..\output\main.o: ..\Control\outer\outer.h
 ..\output\main.o: ..\User\systick\systick.h
 ..\output\main.o: ..\User\General_timx\tim4.h

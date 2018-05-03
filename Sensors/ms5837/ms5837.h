@@ -3,6 +3,8 @@
 #include "stm32f10x.h"
 #include "iic.h"
 #include "loop.h"
+#include "mavlink.h"
+#include "debug.h"
 
 
 #define     MS5837_ADDRESS		    0xec                      //0x76×óÒÆÒ»Î»£¬Ð´µØÖ·
@@ -34,5 +36,6 @@ float MS5837_pressure(float conversion) ;
 float MS5837_temperature(void) ;
 float MS5837_depth(void) ;
 void MS5837_SetOffset(float offset);
+int MS5837_Send_MAVLink_Message(mavlink_message_t* msg_p,uint8_t* buf);
 #endif
 

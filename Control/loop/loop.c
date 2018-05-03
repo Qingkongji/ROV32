@@ -2,7 +2,7 @@
 
 static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz,cnt_1Hz;
 int cnt_MS5837;
-static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
+//static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
 
 static mavlink_message_t msg;
 static uint8_t buf[BUF_LENGTH];
@@ -45,27 +45,30 @@ static void Loop_50Hz(void)
 static void Loop_20Hz(void)
 {
 	  int len;
+	
+#ifdef JY901DEBUG
+	  char str[100];
+#endif
+	
 #ifdef DATASENDDEBUG
 	  Usart_SendString( NEO_USARTx, "20Hz\n");
 #endif
-	  //发送深度传感器消息,if data has changed
-	  if(MS5837_temp.depth != MS5837.depth){
-		//send the data
-		//mavlink_msg_sensor_data_pack(1,200,&msg,MS5837.depth,MS5837.temp,MS5837.pressure,)
-		
-		//update the data of deep sensor
-		    MS5837_temp.depth = MS5837.depth;
-		    MS5837_temp.offset = MS5837.offset;
-		    MS5837_temp.pressure = MS5837.pressure;
-		    MS5837_temp.temp = MS5837.temp;
-		
-		    mavlink_msg_ms5837_data_pack(1,MAVLINK_MSG_ID_MS5837_DATA,&msg,MS5837.depth,MS5837.temp,MS5837.pressure);
-		    len = mavlink_msg_to_send_buffer(buf, &msg);
-		    Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
-		
-
-	}
-	//发送JY901消息
+	//进行无人机自检，并发送心跳包
+    
+	 
+	  //发送深度传感器消息,if depth has changed
+	  //经过测试，MS5837能够读取传感器的值并进行发送
+		 len = MS5837_Send_MAVLink_Message(&msg,buf);
+	
+	  //发送JY901消息
+	  //经过测试，JY901能够正常读取传感器的值并进行发送
+#ifdef JY901DEBUG		
+    sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
+		Usart_SendString(NEO_USARTx,str);
+#endif
+     len = JY901_Send_MAVLink_Message(&msg,buf);
+    
+		 
 	
 }
 
@@ -75,7 +78,7 @@ static void Loop_10Hz(void)
 	MS5837_Read_From_Part();
 }
 
-//向Nanopi发送心跳包
+//向Nanopi发送心跳包,同时检测传感器及无人机状态
 static void Loop_1Hz(void)
 {
 	int len = 0;
@@ -88,13 +91,13 @@ void ROV_Loop(void)
 {
 	if( cnt_200Hz >= 5 )
 	{
-		Loop_200Hz();
+		Loop_200Hz();  //姿态内环控制
 		cnt_200Hz = 0;
 	}
 	
 	if( cnt_100Hz >= 10 )
 	{
-		Loop_100Hz();
+		Loop_100Hz(); //更新遥控信号以及传感器存储数据
 		cnt_100Hz = 0;
 	}
 	
