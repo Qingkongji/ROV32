@@ -57,6 +57,7 @@ static void Loop_20Hz(void)
     
 	 
 	  //发送深度传感器消息,if depth has changed
+	  //经过测试，MS5837能够读取传感器的值并进行发送
 		 len = MS5837_Send_MAVLink_Message(&msg,buf);
 	
 	  //发送JY901消息
