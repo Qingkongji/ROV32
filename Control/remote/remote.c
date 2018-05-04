@@ -40,12 +40,12 @@ void Decode(const mavlink_message_t* msg)
 {
 	switch (msg->msgid)
 	{
-		case MAVLINK_MSG_ID_HEARTBEAT:
+		case MAVLINK_MSG_ID_HEARTBEAT:                   //心跳包
 		{
 			mavlink_msg_heartbeat_decode(msg, &heartbeat);
 			break;
 		}
-		case MAVLINK_MSG_ID_JOYSTICK_CONTROL:
+		case MAVLINK_MSG_ID_JOYSTICK_CONTROL:            //摇杆指令消息
 		{
 			mavlink_msg_joystick_control_decode(msg, &joystick_control);
 			remote_x = joystick_control.x_acc;
@@ -54,6 +54,7 @@ void Decode(const mavlink_message_t* msg)
 			remote_yaw = joystick_control.yaw_acc;
 			break;
 		}
+		//上锁与解锁的MAVLINK消息
 		default:break;
 	}
 }

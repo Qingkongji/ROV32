@@ -1,6 +1,7 @@
 #include "loop.h"
 
-static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_10Hz,cnt_1Hz;
+static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_15Hz,cnt_1Hz;
+int8_t Lock_flag;           //0为上锁，1为解锁
 int cnt_MS5837;
 //static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
 
@@ -13,7 +14,7 @@ void loop_cnt(void)
 	cnt_100Hz++;
 	cnt_50Hz++;
 	cnt_20Hz++;
-	cnt_10Hz++;
+	cnt_15Hz++;
 	cnt_1Hz++;
 	cnt_MS5837++;
 }	
@@ -23,7 +24,6 @@ void loop_cnt(void)
 static void Loop_200Hz(void)
 {
 	Inner_Loop();
-	//Usart_SendString( NEO_USARTx, "200Hz");
 }
 
 //更新遥控信号以及传感器存储数据
@@ -71,7 +71,7 @@ static void Loop_20Hz(void)
 }
 
 //MS5837 Deep Sensor Data collection
-static void Loop_10Hz(void)
+static void Loop_15Hz(void)
 {
 	MS5837_Read_From_Part();
 }
@@ -89,19 +89,21 @@ void ROV_Loop(void)
 {
 	if( cnt_200Hz >= 5 )
 	{
-		Loop_200Hz();  //姿态内环控制
+		if( Lock_flag )
+			Loop_200Hz();    //姿态内环控制
 		cnt_200Hz = 0;
 	}
 	
 	if( cnt_100Hz >= 10 )
 	{
-		Loop_100Hz(); //更新遥控信号以及传感器存储数据
+		Loop_100Hz();      //更新遥控信号以及传感器存储数据
 		cnt_100Hz = 0;
 	}
 	
 	if( cnt_50Hz >= 20 )
 	{
-		Loop_50Hz();
+		if( Lock_flag )
+			Loop_50Hz();     //姿态外环控制
 		cnt_50Hz = 0;
 	}
 	
@@ -111,10 +113,10 @@ void ROV_Loop(void)
 		cnt_20Hz = 0;
 	}
 	
-	if( cnt_10Hz >= 67 )
+	if( cnt_15Hz >= 67 )
 	{
-		Loop_10Hz();
-		cnt_10Hz = 0;
+		Loop_15Hz();
+		cnt_15Hz = 0;
 	}
 	
 	if( cnt_1Hz >= 1000)
@@ -131,8 +133,9 @@ void cnt_init(void)
 	cnt_100Hz = 0;
 	cnt_50Hz = 0;
 	cnt_20Hz = 0;
-	cnt_10Hz = 0;
+	cnt_15Hz = 0;
 	cnt_MS5837 = 0;
+	Lock_flag = 0;
 }
 
 

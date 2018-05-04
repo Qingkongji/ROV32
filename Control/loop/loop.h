@@ -12,6 +12,7 @@
 #define BUF_LENGTH 2048
 
 extern int cnt_MS5837;
+extern int8_t Lock_flag;
 
 void loop_cnt(void);
 void ROV_Loop(void);
