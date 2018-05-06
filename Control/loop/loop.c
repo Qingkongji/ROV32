@@ -135,7 +135,7 @@ void cnt_init(void)
 	cnt_20Hz = 0;
 	cnt_15Hz = 0;
 	cnt_MS5837 = 0;
-	Lock_flag = 0;
+	Lock_flag = 1;
 }
 
 

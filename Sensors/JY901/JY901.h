@@ -99,7 +99,7 @@ struct SGyro
 };
 struct SAngle
 {
-	short Angle[3];  //angle
+	float Angle[3];  //angle
 	short T;
 };
 struct SMag
