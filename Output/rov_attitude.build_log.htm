@@ -17,20 +17,23 @@ Library Manager: ArmAr.exe V5.05 update 1 (build 106)
 Hex Converter:   FromElf.exe V5.05 update 1 (build 106)
 CPU DLL:         SARMCM3.DLL V5.14.0.0
 Dialog DLL:      DCM.DLL V1.13.1.0
-Target DLL:      CMSIS_AGDI.dll V1.21.0.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.14.0_KEIL
 Dialog DLL:      TCM.DLL V1.14.4.0
  
 <h2>Project:</h2>
 F:\ROV32-latest\Project\rov_attitude.uvprojx
-Project File Date:  05/03/2018
+Project File Date:  05/05/2018
 
 <h2>Output:</h2>
 Build target 'rov_attitude'
-compiling remote.c...
+compiling loop.c...
+..\Control\loop\loop.c(47): warning:  #550-D: variable "len" was set but never used
+        int len;
+..\Control\loop\loop.c: 1 warning, 0 errors
 linking...
-Program Size: Code=28224 RO-data=3364 RW-data=292 ZI-data=5908  
+Program Size: Code=28228 RO-data=3364 RW-data=292 ZI-data=5908  
 FromELF: creating hex file...
-"..\Output\rov_attitude.axf" - 0 Error(s), 0 Warning(s).
+"..\Output\rov_attitude.axf" - 0 Error(s), 1 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   F:\ROV32-latest\Project\RTE

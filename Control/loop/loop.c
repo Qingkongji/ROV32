@@ -131,7 +131,7 @@ void cnt_init(void)
 {
 	cnt_200Hz = 0;
 	cnt_100Hz = 0;
-	cnt_50Hz = 0;
+	cnt_50Hz = 16;
 	cnt_20Hz = 0;
 	cnt_15Hz = 0;
 	cnt_MS5837 = 0;
