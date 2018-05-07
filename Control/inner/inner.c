@@ -115,6 +115,13 @@ void Inner_Loop(void)
 	pidData_yaw_w.feedback = JY901_Gyro.w[1];
 	pidData_pitch_w.feedback = JY901_Gyro.w[2];
 	pidData_deep.feedback = MS5837_depth();
+	//处理角速度防止处于临界值 角速度范围为0-3999°/s	
+	if( pidData_roll_w.feedback >= ( pidData_roll_w.set+2000 ) )
+		pidData_roll_w.feedback -= 4000;
+	if( pidData_yaw_w.feedback >= ( pidData_yaw_w.set+2000 ) )
+		pidData_yaw_w.feedback -= 4000;
+	if( pidData_pitch_w.feedback >= ( pidData_pitch_w.set+2000 ) )
+		pidData_pitch_w.feedback -= 4000;
 	//更新PID数据
 	PIDdataUpdate(&pidData_pitch_w);
 	PIDdataUpdate(&pidData_roll_w);

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\rov_attitude.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\rov_attitude.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon May 07 16:26:49 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon May 07 17:39:39 2018
 <BR><P>
 <H3>Maximum Stack Usage =       1080 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1426,7 +1426,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[de]"></a>Inner_Loop</STRONG> (Thumb, 508 bytes, Stack size 32 bytes, inner.o(.text))
+<P><STRONG><a name="[de]"></a>Inner_Loop</STRONG> (Thumb, 736 bytes, Stack size 32 bytes, inner.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Inner_Loop &rArr; MS5837_depth &rArr; __aeabi_ddiv &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_depth
@@ -1442,6 +1442,7 @@ Global Symbols
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fmul
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_fadd
 <LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2iz
+<LI><a href="#[c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_cfcmple
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetPID_OUT
 <LI><a href="#[c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PIDdataUpdate
 </UL>
@@ -1847,6 +1848,7 @@ Global Symbols
 
 <P><STRONG><a name="[c7]"></a>__aeabi_cfcmple</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, cfcmple.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Outer_Loop
+<LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Inner_Loop
 <LI><a href="#[d4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_YAW
 <LI><a href="#[d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_PITCH
 <LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_ROLL
