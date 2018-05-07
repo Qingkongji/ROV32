@@ -94,7 +94,7 @@ struct SAcc
 };
 struct SGyro
 {
-	short w[3];  //angular velocity
+	float w[3];  //angular velocity
 	short T;
 };
 struct SAngle

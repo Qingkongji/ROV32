@@ -18,9 +18,9 @@ void Outer_Init(void)
 void Outer_Loop(void)
 {
 	//获取传感器数据,单位为度
-	pidData_roll_angle.feedback = JY901_Angle.Angle[0];
-	pidData_yaw_angle.feedback = JY901_Angle.Angle[1];
-	pidData_pitch_angle.feedback = JY901_Angle.Angle[2];
+	pidData_yaw_angle.feedback = JY901_Angle.Angle[0];
+	pidData_pitch_angle.feedback = JY901_Angle.Angle[1];
+	pidData_roll_angle.feedback = JY901_Angle.Angle[2];
 	//处理角度以防止临界值即0与359度之间
 	if(pidData_pitch_angle.feedback >= 180)
 		pidData_pitch_angle.feedback -= 360.0;

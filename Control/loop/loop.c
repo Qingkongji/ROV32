@@ -63,7 +63,7 @@ static void Loop_20Hz(void)
 //发送JY901消息
 //经过测试，JY901能够正常读取传感器的值并进行发送
 #ifdef JY901DEBUG		
-	sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
+	sprintf(str,"yaw=%d,pitch=%d,roll=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
 	Usart_SendString(NEO_USARTx,str);
 #endif
 	len = JY901_Send_MAVLink_Message(&msg,buf);
