@@ -26,14 +26,14 @@ void GetDataFromJY901(unsigned char ucData)
 				          //JY901_Acc.a[0] =()
 				          break;
 			
-			case 0x52:	JY901_Gyro.w[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*2000;      //Æ«º½   yaw
-									JY901_Gyro.w[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6])/32768.0*2000;      //¸©Ñö   pitch
-			            JY901_Gyro.w[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2])/32768.0*2000;      //¹ö×ª   roll
+			case 0x52:	JY901_Gyro.w[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*2000;      //¹ö×ª   roll
+									JY901_Gyro.w[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6])/32768.0*2000;      //Æ«º½   yaw
+			            JY901_Gyro.w[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2])/32768.0*2000;      //¸©Ñö   pitch 
 									break;
 			case 0x53:	
-			            JY901_Angle.Angle[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*180;     //Æ«º½   yaw 
-									JY901_Angle.Angle[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6])/32768.0*180;     //¸©Ñö   pitch
-			            JY901_Angle.Angle[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2])/32768.0*180;     //¹ö×ª   roll  
+			            JY901_Angle.Angle[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*180;     //¹ö×ª   roll 
+									JY901_Angle.Angle[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6])/32768.0*180;     //Æ«º½   yaw
+			            JY901_Angle.Angle[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2])/32768.0*180;     //¸©Ñö   pitch  
 									break;
 			
 		}

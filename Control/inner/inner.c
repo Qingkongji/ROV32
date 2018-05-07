@@ -111,9 +111,9 @@ void Inner_Init(void)
 void Inner_Loop(void)
 {
 	//获得传感器数据，角速度单位为度每秒
-	pidData_yaw_w.feedback = JY901_Gyro.w[0];
-	pidData_pitch_w.feedback = JY901_Gyro.w[1];
-	pidData_roll_w.feedback = JY901_Gyro.w[2];
+	pidData_roll_w.feedback = JY901_Gyro.w[0];
+	pidData_yaw_w.feedback = JY901_Gyro.w[1];
+	pidData_pitch_w.feedback = JY901_Gyro.w[2];
 	pidData_deep.feedback = MS5837_depth();
 	//更新PID数据
 	PIDdataUpdate(&pidData_pitch_w);

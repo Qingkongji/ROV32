@@ -8,6 +8,9 @@ float out_pitch_angle;
 float out_roll_angle;
 float out_yaw_angle;
 
+//static int cnt = 0;
+//static char str[100];
+
 void Outer_Init(void)
 {
 	PIDdataInit(&pidData_pitch_angle,1,0,0,5000,10000);      //kp ki kd imax outmax
@@ -18,9 +21,9 @@ void Outer_Init(void)
 void Outer_Loop(void)
 {
 	//获取传感器数据,单位为度
-	pidData_yaw_angle.feedback = JY901_Angle.Angle[0];
-	pidData_pitch_angle.feedback = JY901_Angle.Angle[1];
-	pidData_roll_angle.feedback = JY901_Angle.Angle[2];
+	pidData_roll_angle.feedback = JY901_Angle.Angle[0];
+	pidData_yaw_angle.feedback = JY901_Angle.Angle[1];
+	pidData_pitch_angle.feedback = JY901_Angle.Angle[2];
 	//处理角度以防止临界值即0与359度之间
 	if(pidData_pitch_angle.feedback >= 180)
 		pidData_pitch_angle.feedback -= 360.0;
@@ -28,6 +31,14 @@ void Outer_Loop(void)
 		pidData_roll_angle.feedback -= 360.0;
 	if(pidData_yaw_angle.feedback >= (180+remote_yaw))
 		pidData_yaw_angle.feedback -= 360.0;
+		
+//	if( cnt++>50 )
+//	{
+//		sprintf(str,"yaw=%.1f,roll=%.1f,pitch=%.1f\n",pidData_yaw_angle.feedback,pidData_roll_angle.feedback,pidData_pitch_angle.feedback);
+//		Usart_SendString(NEO_USARTx,str);
+//		cnt = 0;
+//	}
+	
 	//更新PID数据
 	PIDdataUpdate(&pidData_pitch_angle);
 	PIDdataUpdate(&pidData_roll_angle);
