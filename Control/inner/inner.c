@@ -103,7 +103,7 @@ void Inner_Init(void)
 {
 	PIDdataInit(&pidData_deep,200,4,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	
-	PIDdataInit(&pidData_pitch_w,1,0,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
+	PIDdataInit(&pidData_pitch_w,20,10,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	PIDdataInit(&pidData_roll_w,20,10,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	PIDdataInit(&pidData_yaw_w,50,10,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 }
