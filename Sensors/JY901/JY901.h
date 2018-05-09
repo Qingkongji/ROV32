@@ -94,12 +94,12 @@ struct SAcc
 };
 struct SGyro
 {
-	short w[3];  //angular velocity
+	float w[3];  //angular velocity
 	short T;
 };
 struct SAngle
 {
-	short Angle[3];  //angle
+	float Angle[3];  //angle
 	short T;
 };
 struct SMag

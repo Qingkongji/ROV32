@@ -12,8 +12,9 @@ extern signed int remote_y;
 extern signed int remote_z;
 extern signed int remote_yaw;
 
+void remote_init(void);
 void Updata_set(void);
-void Decode(const mavlink_message_t* msg, mavlink_joystick_control_t* joystick_control);
+void Decode(const mavlink_message_t* msg);
 
 #endif
 

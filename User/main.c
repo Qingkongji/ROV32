@@ -20,16 +20,23 @@ int main(void)
 	char str[100];
 	
 	/*初始化USART 115200 8-N-1，中断接收*/
-	/*add comment*/
-  USART1_Config();
-	I2C_GPIOconfig();
-	JY_USART3_Remap_Config();
-	TIM3_Init();
-	TIM8_Init();
-	LED_TIM4_Init();
-	Systick_Init();
-	Outer_Init();
-	Inner_Init();
+	/*接口初始化*/
+  USART1_Config();             //nanopi接口
+	I2C_GPIOconfig();            //MS5837接口
+	JY_USART3_Remap_Config();    //JY901接口
+	TIM3_Init();                 //四路PWM接口-电机
+	TIM8_Init();                 //四路PWM接口-电机
+	LED_TIM4_Init();             //两路灯光PWM接口
+	Systick_Init();              //滴答定时器
+	
+	I2C_delay_ms(1000);
+	I2C_delay_ms(1000);
+	I2C_delay_ms(1000);
+	
+	/*控制初始化*/
+	remote_init();               //指令初始化赋值
+	Outer_Init();                //外环PID参数初始化
+	Inner_Init();                //内环PID参数初始化
 	
 #ifdef DEBUG
 	sprintf(str,"This is the debug edition\n");
@@ -45,8 +52,8 @@ int main(void)
 	sprintf(str,"MS5837 connected\n");
 	Usart_SendString(NEO_USARTx,str);
 
-	MS5837_Init();
-	cnt_init();
+	MS5837_Init();               //MS5837初始化，完成校准工作
+	cnt_init();                  //循环内计数初始化
 	
 			
   while(1)
