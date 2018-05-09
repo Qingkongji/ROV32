@@ -14,6 +14,7 @@
 
 //#define JY901DEBUG     //debug macro for jy901
 #define MS5837DEBUG    //debug macro for ms5837
+#define IRQDEBUG
 
 #endif  //#ifdef DEBUG
 

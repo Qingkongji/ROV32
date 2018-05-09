@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\rov_attitude.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\rov_attitude.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Thu May 03 10:28:24 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Wed May 09 15:08:28 2018
 <BR><P>
 <H3>Maximum Stack Usage =       1096 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -352,7 +352,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 58 bytes, Stack size 344 bytes, stm32f10x_it.o(.text))
+<P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 70 bytes, Stack size 344 bytes, stm32f10x_it.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1096<LI>Call Chain = USART1_IRQHandler &rArr; mavlink_parse_char &rArr; mavlink_frame_char_buffer &rArr; mavlink_signature_check &rArr; mavlink_sha256_final_48 &rArr; mavlink_sha256_update &rArr; mavlink_sha256_calc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[6b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mavlink_parse_char
@@ -360,6 +360,7 @@ Global Symbols
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_ReceiveData
 <LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART_GetITStatus
 <LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decode
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
@@ -1876,6 +1877,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Send_MAVLink_Message
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
+<LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
 <P><STRONG><a name="[1ba]"></a>__c89sprintf</STRONG> (Thumb, 0 bytes, Stack size 24 bytes, printfa.o(i.__0sprintf), UNUSED)
