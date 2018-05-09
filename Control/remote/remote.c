@@ -1,4 +1,5 @@
 #include "remote.h"
+//fix conflict
 
 float remote_pitch_angle;
 float remote_roll_angle;
