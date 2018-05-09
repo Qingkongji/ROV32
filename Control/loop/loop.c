@@ -44,21 +44,47 @@ static void Loop_50Hz(void)
 //无人机数据发送以及自检
 static void Loop_20Hz(void)
 {
+<<<<<<< HEAD
 	int len;
 	
 #ifdef JY901DEBUG
 	char str[100];
+=======
+	  int len;
+	
+#ifdef JY901DEBUG
+	  char str[100];
+>>>>>>> HaskiDuan-master
 #endif
 	
 #ifdef DATASENDDEBUG
 	Usart_SendString( NEO_USARTx, "20Hz\n");
 #endif
+<<<<<<< HEAD
 //进行无人机自检，并发送心跳包
     
 	 
 //发送深度传感器消息,if depth has changed
 //经过测试，MS5837能够读取传感器的值并进行发送
 	len = MS5837_Send_MAVLink_Message(&msg,buf);
+=======
+	//进行无人机自检，并发送心跳包
+    
+	 
+	  //发送深度传感器消息,if depth has changed
+	  //经过测试，MS5837能够读取传感器的值并进行发送
+		 len = MS5837_Send_MAVLink_Message(&msg,buf);
+	
+	  //发送JY901消息
+	  //经过测试，JY901能够正常读取传感器的值并进行发送
+#ifdef JY901DEBUG		
+    sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
+		Usart_SendString(NEO_USARTx,str);
+#endif
+     len = JY901_Send_MAVLink_Message(&msg,buf);
+    
+		 
+>>>>>>> HaskiDuan-master
 	
 //发送JY901消息
 //经过测试，JY901能够正常读取传感器的值并进行发送
@@ -89,14 +115,22 @@ void ROV_Loop(void)
 {
 	if( cnt_200Hz >= 5 )
 	{
+<<<<<<< HEAD
 		if( Lock_flag )
 			Loop_200Hz();    //姿态内环控制
+=======
+		Loop_200Hz();  //姿态内环控制
+>>>>>>> HaskiDuan-master
 		cnt_200Hz = 0;
 	}
 	
 	if( cnt_100Hz >= 10 )
 	{
+<<<<<<< HEAD
 		Loop_100Hz();      //更新遥控信号以及传感器存储数据
+=======
+		Loop_100Hz(); //更新遥控信号以及传感器存储数据
+>>>>>>> HaskiDuan-master
 		cnt_100Hz = 0;
 	}
 	
