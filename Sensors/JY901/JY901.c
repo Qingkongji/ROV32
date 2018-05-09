@@ -26,15 +26,9 @@ void GetDataFromJY901(unsigned char ucData)
 				          //JY901_Acc.a[0] =()
 				          break;
 			
-<<<<<<< HEAD
 			case 0x52:	JY901_Gyro.w[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*2000;      //¹ö×ª   roll
 									JY901_Gyro.w[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6])/32768.0*2000;      //Æ«º½   yaw
 			            JY901_Gyro.w[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2])/32768.0*2000;      //¸©Ñö   pitch 
-=======
-			case 0x52:	JY901_Gyro.w[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4]);      //¹ö×ª roll
-									JY901_Gyro.w[1]=((short)ucRxBuffer[7]<<8|ucRxBuffer[6]);      //Æ«º½ yaw
-			            JY901_Gyro.w[2]=((short)ucRxBuffer[3]<<8|ucRxBuffer[2]);      //¸©Ñö pitch
->>>>>>> HaskiDuan-master
 									break;
 			case 0x53:	
 			            JY901_Angle.Angle[0]=((short)ucRxBuffer[5]<<8|ucRxBuffer[4])/32768.0*180;     //¹ö×ª   roll 
@@ -57,17 +51,10 @@ int JY901_Send_MAVLink_Message(mavlink_message_t* msg_p,uint8_t* buf){
 		//send the data
 		//mavlink_msg_sensor_data_pack(1,200,&msg,MS5837.depth,MS5837.temp,MS5837.pressure,)
 		   
-<<<<<<< HEAD
-		mavlink_msg_jy901_data_pack(1,MAVLINK_MSG_ID_JY901_DATA,msg_p,JY901_Angle.Angle[2],JY901_Angle.Angle[0],JY901_Angle.Angle[1],\
-	                                                                0,0,0,\
-	                                                                0,0,0,\
-	                                                                0,0,0);              //roll,yaw,pitch
-=======
 		mavlink_msg_jy901_data_pack(1,MAVLINK_MSG_ID_JY901_DATA,msg_p,JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2],\
 	                                                                0,0,0,\
 	                                                                0,0,0,\
 	                                                                0,0,0);              //row,yaw,pitch
->>>>>>> HaskiDuan-master
 	                                                                                             //velocity of row, yaw, pitch
 	                                                                                             //acc of x ,y ,z
 	                                                                                             //megnatic field intensity of x,y,z

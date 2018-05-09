@@ -153,7 +153,6 @@ void NEO_USART_IRQHandler(void)
   uint8_t ucTemp;
 	mavlink_message_t msg;
 	mavlink_status_t status;
-	mavlink_joystick_control_t joystick_control;
 	//Usart_SendString( NEO_USARTx, "message received\n");
 	if(USART_GetITStatus(NEO_USARTx,USART_IT_RXNE)!=RESET)
 	{		

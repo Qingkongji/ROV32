@@ -20,12 +20,9 @@
 
 //#define JY901DEBUG     //debug macro for jy901
 #define MS5837DEBUG    //debug macro for ms5837
-<<<<<<< HEAD
-=======
 #define IRQDEBUG
 #define DECODERDEBUG
 
->>>>>>> HaskiDuan-master
 
 #endif  //#ifdef DEBUG
 
