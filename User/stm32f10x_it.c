@@ -47,6 +47,7 @@
 static unsigned char TxBuffer[256];
 static unsigned char TxCounter=0;
 static unsigned char count=0; 
+static char str[100];
 
 /**
   * @brief  This function handles NMI exception.
@@ -152,6 +153,7 @@ void NEO_USART_IRQHandler(void)
   uint8_t ucTemp;
 	mavlink_message_t msg;
 	mavlink_status_t status;
+	mavlink_joystick_control_t joystick_control;
 	//Usart_SendString( NEO_USARTx, "message received\n");
 	if(USART_GetITStatus(NEO_USARTx,USART_IT_RXNE)!=RESET)
 	{		
@@ -160,7 +162,10 @@ void NEO_USART_IRQHandler(void)
 		//Usart_SendString( NEO_USARTx, "message really received\n");
 		if(mavlink_parse_char(MAVLINK_COMM_0,ucTemp,&msg,&status)){
 			Decode(&msg);
-			Usart_SendString( NEO_USARTx, "mavlink message received\n");
+#ifdef IRQDEBUG 
+			sprintf(str,"mavlink message received, the message ID is %d\n",msg.msgid);
+			Usart_SendString( NEO_USARTx, str);
+#endif
 		}
 	}	 
 		

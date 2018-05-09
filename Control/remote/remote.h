@@ -7,10 +7,10 @@
 #include "PID.h"
 #include "mavlink.h"
 
-extern float remote_x;
-extern float remote_y;
-extern float remote_z;
-extern float remote_yaw;
+extern signed int remote_x;
+extern signed int remote_y;
+extern signed int remote_z;
+extern signed int remote_yaw;
 
 void Updata_set(void);
 void Decode(const mavlink_message_t* msg);

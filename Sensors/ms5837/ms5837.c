@@ -1,5 +1,4 @@
 #include "ms5837.h"
-#include "debug.h"
 
 MS5837_ValueTypeDef MS5837={0,0,0,0.03};
 
@@ -249,7 +248,9 @@ void MS5837_Read_Part3(void)
 
 void MS5837_Read_From_Part(void)
 {
+#ifdef MS5837DEBUG
 	char str[100];
+#endif
 	if(cnt_MS5837 >= 20)
 		{
 			switch( Part_of_MS5837 )
@@ -267,5 +268,28 @@ void MS5837_Read_From_Part(void)
 			}
 		}
 }
+
+int MS5837_Send_MAVLink_Message(mavlink_message_t* msg_p,uint8_t* buf){
+	  int len;
+	  static float temp = 0.0;
+#ifdef MS5837DEBUG
+	  char str[100];
+	  sprintf(str,"sending mavlink message\n");
+		Usart_SendString(NEO_USARTx,str);
+#endif
+    if(temp != MS5837.depth){
+		//send the data
+		//mavlink_msg_sensor_data_pack(1,200,&msg,MS5837.depth,MS5837.temp,MS5837.pressure,)
+		    temp = MS5837.depth;
+		    mavlink_msg_ms5837_data_pack(1,MAVLINK_MSG_ID_MS5837_DATA,msg_p,MS5837.depth,MS5837.temp,MS5837.pressure);
+		    len = mavlink_msg_to_send_buffer(buf, msg_p);
+		    Usart_SendArray(NEO_USARTx,(uint8_t *)buf,len);
+		
+
+	  }
+		
+		return len;
+}
+
 
 	

@@ -23,7 +23,6 @@
 ..\output\inner.o: ..\Control\inner\inner.h
 ..\output\inner.o: ..\Control\outer\outer.h
 ..\output\inner.o: ..\Sensors\JY901\JY901.h
-..\output\inner.o: ..\User\debug\debug.h
 ..\output\inner.o: ..\Mavlink\ROV\mavlink.h
 ..\output\inner.o: ..\Mavlink\ROV\version.h
 ..\output\inner.o: ..\Mavlink\ROV\ROV.h
@@ -205,4 +204,5 @@
 ..\output\inner.o: ..\Mavlink\ROV\../common/./mavlink_msg_param_ext_ack.h
 ..\output\inner.o: ..\Mavlink\ROV\../common/./mavlink_msg_obstacle_distance.h
 ..\output\inner.o: ..\Mavlink\ROV\../mavlink_get_info.h
+..\output\inner.o: ..\User\debug\debug.h
 ..\output\inner.o: ..\Control\remote\remote.h

@@ -2,6 +2,9 @@
 #define _JY901_H_
 
 #include "STM32F10x.h"
+#include "mavlink.h"
+#include "debug.h"
+#include "usart1.h"
 
 #define SAVE 			0x00
 #define CALSW 		0x01
@@ -135,6 +138,7 @@ extern struct SAcc    JY901_Acc;    //º”ÀŸ∂»
 
 
 void GetDataFromJY901(unsigned char ucData);
+int JY901_Send_MAVLink_Message(mavlink_message_t* msg_p,uint8_t* buf);
 
 #endif 
 
