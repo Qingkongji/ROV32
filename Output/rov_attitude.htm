@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\rov_attitude.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\rov_attitude.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed May 09 17:23:37 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed May 09 19:43:48 2018
 <BR><P>
 <H3>Maximum Stack Usage =       1080 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1322,7 +1322,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[5c]"></a>ROV_Loop</STRONG> (Thumb, 216 bytes, Stack size 8 bytes, loop.o(.text))
+<P><STRONG><a name="[5c]"></a>ROV_Loop</STRONG> (Thumb, 220 bytes, Stack size 8 bytes, loop.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 936<LI>Call Chain = ROV_Loop &rArr; Loop_20Hz &rArr; MS5837_Send_MAVLink_Message &rArr; mavlink_msg_ms5837_data_pack &rArr; mavlink_finalize_message_buffer &rArr; mavlink_sign_packet &rArr; mavlink_sha256_final_48 &rArr; mavlink_sha256_update &rArr; mavlink_sha256_calc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_1Hz

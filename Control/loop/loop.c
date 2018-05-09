@@ -99,7 +99,8 @@ void ROV_Loop(void)
 {
 	if( cnt_200Hz >= 5 )
 	{
-		Loop_200Hz();  //姿态内环控制
+		if( Lock_flag )
+			Loop_200Hz();  //姿态内环控制
 		cnt_200Hz = 0;
 	}
 	
