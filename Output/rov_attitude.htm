@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\rov_attitude.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\rov_attitude.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Wed May 09 15:08:28 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Wed May 09 15:21:51 2018
 <BR><P>
 <H3>Maximum Stack Usage =       1096 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -576,6 +576,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Send_MAVLink_Message
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decode
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 
@@ -1399,10 +1400,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[d6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_100Hz
 </UL>
 
-<P><STRONG><a name="[6c]"></a>Decode</STRONG> (Thumb, 84 bytes, Stack size 24 bytes, remote.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Decode
+<P><STRONG><a name="[6c]"></a>Decode</STRONG> (Thumb, 134 bytes, Stack size 136 bytes, remote.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Decode &rArr; Usart_SendString &rArr; Usart_SendByte
 </UL>
-<BR>[Calls]<UL><LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<BR>[Calls]<UL><LI><a href="#[56]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart_SendString
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memcpy
+<LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
@@ -1877,6 +1880,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Send_MAVLink_Message
 <LI><a href="#[de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
+<LI><a href="#[6c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Decode
 <LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USART1_IRQHandler
 </UL>
 

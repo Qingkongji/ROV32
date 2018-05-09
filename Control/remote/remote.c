@@ -10,7 +10,7 @@ int32_t remote_yaw_w;
 
 int32_t remote_h;
 
-signed int remote_x;
+signed int remote_x;       //signed + -
 signed int remote_y;
 signed int remote_z;
 signed int remote_yaw;
@@ -23,10 +23,20 @@ void Updata_set(void)
 
 void Decode(const mavlink_message_t* msg, mavlink_joystick_control_t* joystick_control)
 {
-	mavlink_msg_joystick_control_decode(msg, joystick_control);
-	remote_x = joystick_control->x_acc;
-	remote_y = joystick_control->y_acc;
-	remote_z = joystick_control->z_acc;
-	remote_h = joystick_control->yaw_acc;
+#ifdef DECODERDEBUG
+	char str[100];
+#endif
+	
+	if(msg->msgid == MAVLINK_MSG_ID_JOYSTICK_CONTROL){
+	  mavlink_msg_joystick_control_decode(msg, joystick_control);
+	  remote_x = joystick_control->x_acc;
+	  remote_y = joystick_control->y_acc;
+	  remote_z = joystick_control->z_acc;
+	  remote_h = joystick_control->yaw_acc;
+#ifdef DECODERDEBUG
+		sprintf(str,"remote_x=%d,remote_y=%d,remote_z=%d,remote_h = %d\n",remote_x,remote_y,remote_z,remote_h);
+		Usart_SendString(NEO_USARTx,str);
+#endif
+	}
 }
 
