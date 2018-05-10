@@ -17,6 +17,8 @@ unsigned int direction_1 = 0,direction_2 = 1,direction_3 = 1;
 
 void MOTOR_UR(signed int v,unsigned int direction)    //TIM3_CH1    UP-RIGHT
 {
+	if(v == (TIM_GetCapture1(GENERAL_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -29,6 +31,8 @@ void MOTOR_UR(signed int v,unsigned int direction)    //TIM3_CH1    UP-RIGHT
 
 void MOTOR_UL(signed int v,unsigned int direction)    //TIM3_CH2    UP-LEFT
 {
+	if(v == (TIM_GetCapture2(GENERAL_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -41,6 +45,8 @@ void MOTOR_UL(signed int v,unsigned int direction)    //TIM3_CH2    UP-LEFT
 
 void MOTOR_DL(signed int v,unsigned int direction)    //TIM3_CH3    DOWN-LEFT
 {
+	if(v == (TIM_GetCapture3(GENERAL_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -53,6 +59,8 @@ void MOTOR_DL(signed int v,unsigned int direction)    //TIM3_CH3    DOWN-LEFT
 
 void MOTOR_DR(signed int v,unsigned int direction)    //TIM3_CH4    DOWN-RIGHT
 {
+	if(v == (TIM_GetCapture4(GENERAL_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -65,6 +73,8 @@ void MOTOR_DR(signed int v,unsigned int direction)    //TIM3_CH4    DOWN-RIGHT
 
 void MOTOR_1(signed int v,unsigned int direction)    //TIM8_CH1
 {
+	if(v == (TIM_GetCapture1(ADVANCE_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -77,6 +87,8 @@ void MOTOR_1(signed int v,unsigned int direction)    //TIM8_CH1
 
 void MOTOR_2(signed int v,unsigned int direction)    //TIM8_CH2
 {
+	if(v == (TIM_GetCapture2(ADVANCE_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -89,6 +101,8 @@ void MOTOR_2(signed int v,unsigned int direction)    //TIM8_CH2
 
 void MOTOR_3(signed int v,unsigned int direction)    //TIM8_CH3
 {
+	if(v == (TIM_GetCapture3(ADVANCE_TIM) - 1500))
+		return;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
