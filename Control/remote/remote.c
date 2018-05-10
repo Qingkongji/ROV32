@@ -9,10 +9,10 @@ float remote_pitch_w;
 float remote_roll_w;
 float remote_yaw_w;
 
-signed int remote_x;       //signed + -
-signed int remote_y;
-signed int remote_z;
-signed int remote_yaw;
+float remote_x;       //signed + -
+float remote_y;
+float remote_z;
+float remote_yaw;
 
 
 mavlink_joystick_control_t joystick_control;
@@ -27,10 +27,14 @@ void remote_init(void)
 	remote_yaw = 0;
 	remote_pitch_angle = 0;
 	remote_roll_angle = 0;
-	remote_yaw_angle = 0;
+	remote_yaw_angle = JY901_Angle.Angle[1];
 	remote_pitch_w = 0;
 	remote_roll_w = 0;
 	remote_yaw_w = 0;
+	Reset_set(&pidData_pitch_angle, remote_pitch_angle);
+	Reset_set(&pidData_roll_angle, remote_roll_angle);
+	Reset_set(&pidData_yaw_angle, remote_yaw_angle);
+	Reset_set(&pidData_deep, remote_z);
 }
 	
 
@@ -69,12 +73,12 @@ void Decode(const mavlink_message_t* msg)
 	
 	if(msg->msgid == MAVLINK_MSG_ID_JOYSTICK_CONTROL){
 	  mavlink_msg_joystick_control_decode(msg, &joystick_control);
-	  remote_x = joystick_control.x_acc;
-	  remote_y = joystick_control.y_acc;
-	  remote_z = joystick_control.z_acc;
-	  remote_yaw = joystick_control.yaw_acc;
+	  remote_x = joystick_control.x_acc/32768.0*250;
+	  remote_y = joystick_control.y_acc/32768.0*250;
+	  remote_z = joystick_control.z_acc/32768.0*250;
+	  remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_angle;
 #ifdef DECODERDEBUG
-		sprintf(str,"remote_x=%d,remote_y=%d,remote_z=%d,remote_yaw = %d\n",remote_x,remote_y,remote_z,remote_yaw);
+		sprintf(str,"remote_x=%.1f,remote_y=%.1f,remote_z=%.1f,remote_yaw = %.1f\n",remote_x,remote_y,remote_z,remote_yaw);
 		Usart_SendString(NEO_USARTx,str);
 #endif
 	}

@@ -1,6 +1,6 @@
 #include "loop.h"
 
-static short cnt_200Hz,cnt_100Hz,cnt_50Hz,cnt_20Hz,cnt_15Hz,cnt_1Hz;
+static short cnt_Inner,cnt_Remote,cnt_Outer,cnt_Databack,cnt_Ms5837,cnt_Heartbeat;
 int8_t Lock_flag;           //0为上锁，1为解锁
 int cnt_MS5837;
 //static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
@@ -10,30 +10,30 @@ static uint8_t buf[BUF_LENGTH];
 
 void loop_cnt(void)
 {
-	cnt_200Hz++;
-	cnt_100Hz++;
-	cnt_50Hz++;
-	cnt_20Hz++;
-	cnt_15Hz++;
-	cnt_1Hz++;
+	cnt_Inner++;
+	cnt_Remote++;
+	cnt_Outer++;
+	cnt_Databack++;
+	cnt_Ms5837++;
+	cnt_Heartbeat++;
 	cnt_MS5837++;
 }	
 
 
 //姿态内环控制
-static void Loop_200Hz(void)
+static void Loop_Inner(void)
 {
 	Inner_Loop();
 }
 
 //更新遥控信号以及传感器存储数据
-static void Loop_100Hz(void)
+static void Loop_Remote(void)
 {
 	Updata_set();
 }
 
 //姿态外环控制
-static void Loop_50Hz(void)
+static void Loop_Outer(void)
 {
 #ifdef OUTTERDEBUG
   Usart_SendString( NEO_USARTx, "out loop debug\n");
@@ -42,7 +42,7 @@ static void Loop_50Hz(void)
 }
 
 //无人机数据发送以及自检
-static void Loop_20Hz(void)
+static void Loop_Databack(void)
 {
 	  int len;
 	
@@ -81,13 +81,13 @@ static void Loop_20Hz(void)
 }
 
 //MS5837 Deep Sensor Data collection
-static void Loop_15Hz(void)
+static void Loop_Ms5837(void)
 {
 	MS5837_Read_From_Part();
 }
 
 //向Nanopi发送心跳包,同时检测传感器及无人机状态
-static void Loop_1Hz(void)
+static void Loop_Heartbeat(void)
 {
 	int len = 0;
 	mavlink_msg_heartbeat_pack(1,200,&msg,MAV_TYPE_SUBMARINE,MAV_AUTOPILOT_GENERIC,MAV_MODE_GUIDED_ARMED,0,MAV_STATE_ACTIVE);
@@ -97,53 +97,54 @@ static void Loop_1Hz(void)
 
 void ROV_Loop(void)
 {
-	if( cnt_200Hz >= 5 )
+	if( cnt_Inner >= 20 )
 	{
 		if( Lock_flag )
-			Loop_200Hz();  //姿态内环控制
-		cnt_200Hz = 0;
+			Loop_Inner();  //姿态内环控制 50Hz
+		cnt_Inner = 0;
 	}
 	
-	if( cnt_100Hz >= 10 )
+	if( cnt_Remote >= 10 )
 	{
-		Loop_100Hz(); //更新遥控信号以及传感器存储数据
-		cnt_100Hz = 0;
+		Loop_Remote(); //更新遥控信号以及传感器存储数据 100Hz
+		cnt_Remote = 0;
 	}
 	
-	if( cnt_50Hz >= 20 )
+	if( cnt_Outer >= 100 )
 	{
 		if( Lock_flag )
-			Loop_50Hz();     //姿态外环控制
-		cnt_50Hz = 0;
+			Loop_Outer();     //姿态外环控制 10Hz
+		cnt_Outer = 0;
 	}
 	
-	if( cnt_20Hz >= 50 )
+	if( cnt_Databack >= 50 )
 	{
-		Loop_20Hz();
-		cnt_20Hz = 0;
+		Loop_Databack();    //数据回传20Hz
+		cnt_Databack = 0;
 	}
 	
-	if( cnt_15Hz >= 67 )
+	if( cnt_Ms5837 >= 67 )
 	{
-		Loop_15Hz();
-		cnt_15Hz = 0;
+		Loop_Ms5837();      //MS5837读取 15Hz
+		cnt_Ms5837 = 0;
 	}
 	
-	if( cnt_1Hz >= 1000)
+	if( cnt_Heartbeat >= 1000)
 	{
-		Loop_1Hz();
-		cnt_1Hz = 0;
+		Loop_Heartbeat();   //心跳包 1Hz
+		cnt_Heartbeat = 0;
 	}
 }
 
 
 void cnt_init(void)
 {
-	cnt_200Hz = 0;
-	cnt_100Hz = 0;
-	cnt_50Hz = 16;
-	cnt_20Hz = 0;
-	cnt_15Hz = 0;
+	cnt_Inner = 0;
+	cnt_Remote = 0;
+	cnt_Outer = 81;
+	cnt_Databack = 0;
+	cnt_Ms5837 = 0;
+	cnt_Heartbeat = 0;
 	cnt_MS5837 = 0;
 	Lock_flag = 1;
 }

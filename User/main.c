@@ -29,9 +29,7 @@ int main(void)
 	LED_TIM4_Init();             //两路灯光PWM接口
 	Systick_Init();              //滴答定时器
 	
-	I2C_delay_ms(1000);
-	I2C_delay_ms(1000);
-	I2C_delay_ms(1000);
+	I2C_delay_ms(10000);
 	
 	/*控制初始化*/
 	remote_init();               //指令初始化赋值

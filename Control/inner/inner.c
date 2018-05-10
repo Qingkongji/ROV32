@@ -101,11 +101,11 @@ void MOTOR_3(signed int v,unsigned int direction)    //TIM8_CH3
 
 void Inner_Init(void)
 {
-	PIDdataInit(&pidData_deep,200,4,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
+	PIDdataInit(&pidData_deep,20,0,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	
 	PIDdataInit(&pidData_pitch_w,20,10,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	PIDdataInit(&pidData_roll_w,20,10,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
-	PIDdataInit(&pidData_yaw_w,50,10,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
+	PIDdataInit(&pidData_yaw_w,20,10,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 }
 
 void Inner_Loop(void)
@@ -133,11 +133,15 @@ void Inner_Loop(void)
 	GetPID_OUT(&pidData_yaw_w);
 	GetPID_OUT(&pidData_deep);
 
-	out_pitch_w = pidData_pitch_w.out/100;
-	out_roll_w = pidData_roll_w.out/100;
-	out_yaw_w = pidData_yaw_w.out/100;
+//	out_pitch_w = pidData_pitch_w.out/100;
+//	out_roll_w = pidData_roll_w.out/100;
+//	out_yaw_w = pidData_yaw_w.out/100;
 	out_deep = pidData_deep.out/50;
 	
+	out_pitch_w = 0;
+	out_roll_w = 0;
+	out_yaw_w = 0;
+
 	//电机输出
 	MOTOR_UL((int)(remote_x+remote_y+1*out_yaw_w),direction_ur);
 	MOTOR_UR((int)(remote_x-remote_y),direction_ul);
