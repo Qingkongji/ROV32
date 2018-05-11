@@ -75,7 +75,7 @@ static void ADVANCE_TIM_Mode_Config(void)
 	
 /*--------------------输出比较结构体初始化-------------------*/
 	// 配置为PWM模式1
-	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
+	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM2;
 	// 输出使能
 	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
 	// 输出通道电平极性配置
@@ -99,7 +99,7 @@ static void ADVANCE_TIM_Mode_Config(void)
 	TIM_OC3PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 	
 	//CH4
-	TIM_OCInitStructure.TIM_Pulse = 1600;
+	TIM_OCInitStructure.TIM_Pulse = 1700;
 	TIM_OC4Init(ADVANCE_TIM, &TIM_OCInitStructure);
 	TIM_OC4PreloadConfig(ADVANCE_TIM, TIM_OCPreload_Enable);
 

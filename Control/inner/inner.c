@@ -14,6 +14,7 @@ float out_deep;
 //正桨为1，反桨为0
 unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 1,direction_dl = 0;
 unsigned int direction_1 = 0,direction_2 = 1,direction_3 = 1;
+static char str[100];
 
 void MOTOR_UR(signed int v,unsigned int direction)    //TIM3_CH1    UP-RIGHT
 {
@@ -147,14 +148,14 @@ void Inner_Loop(void)
 	GetPID_OUT(&pidData_yaw_w);
 	GetPID_OUT(&pidData_deep);
 
-//	out_pitch_w = pidData_pitch_w.out/100;
-//	out_roll_w = pidData_roll_w.out/100;
-//	out_yaw_w = pidData_yaw_w.out/100;
+	out_pitch_w = pidData_pitch_w.out/100;
+	out_roll_w = pidData_roll_w.out/100;
+	out_yaw_w = pidData_yaw_w.out/100;
 	out_deep = pidData_deep.out/50;
 	
-	out_pitch_w = 0;
-	out_roll_w = 0;
-	out_yaw_w = 0;
+//	out_pitch_w = 0;
+//	out_roll_w = 0;
+//	out_yaw_w = 0;
 
 	//电机输出
 	MOTOR_UL((int)(remote_x+remote_y+1*out_yaw_w),direction_ur);
