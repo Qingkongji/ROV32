@@ -42,6 +42,10 @@ void Updata_set(void)
 {
 	Reset_set(&pidData_deep, remote_z);
 	Reset_set(&pidData_yaw_angle, remote_yaw);
+	remote_x = joystick_control.x_acc/32768.0*250;
+	remote_y = joystick_control.y_acc/32768.0*250;
+	remote_z = joystick_control.z_acc/32768.0*250;
+	remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_angle;
 }
 
 void Decode(const mavlink_message_t* msg)
@@ -73,10 +77,6 @@ void Decode(const mavlink_message_t* msg)
 	
 	if(msg->msgid == MAVLINK_MSG_ID_JOYSTICK_CONTROL){
 	  mavlink_msg_joystick_control_decode(msg, &joystick_control);
-	  remote_x = joystick_control.x_acc/32768.0*250;
-	  remote_y = joystick_control.y_acc/32768.0*250;
-	  remote_z = joystick_control.z_acc/32768.0*250;
-	  remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_angle;
 #ifdef DECODERDEBUG
 		sprintf(str,"remote_x=%.1f,remote_y=%.1f,remote_z=%.1f,remote_yaw = %.1f\n",remote_x,remote_y,remote_z,remote_yaw);
 		Usart_SendString(NEO_USARTx,str);
