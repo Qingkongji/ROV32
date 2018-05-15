@@ -3,7 +3,7 @@
 
 float remote_pitch_angle;
 float remote_roll_angle;
-float remote_yaw_angle;
+float remote_yaw_init;
 
 float remote_pitch_w;
 float remote_roll_w;
@@ -21,31 +21,34 @@ mavlink_heartbeat_t heartbeat;
 
 void remote_init(void)
 {
+	remote_yaw_init = JY901_Angle.Angle[1];
+	if( remote_yaw_init >= 180 )
+		remote_yaw_init -= 360;
+	remote_yaw = remote_yaw_init;
 	remote_x = 0;
 	remote_y = 0;
 	remote_z = 0;
 	remote_yaw = 0;
 	remote_pitch_angle = 0;
 	remote_roll_angle = 0;
-	remote_yaw_angle = JY901_Angle.Angle[1];
 	remote_pitch_w = 0;
 	remote_roll_w = 0;
 	remote_yaw_w = 0;
 	Reset_set(&pidData_pitch_angle, remote_pitch_angle);
 	Reset_set(&pidData_roll_angle, remote_roll_angle);
-	Reset_set(&pidData_yaw_angle, remote_yaw_angle);
+	Reset_set(&pidData_yaw_angle, remote_yaw);
 	Reset_set(&pidData_deep, remote_z);
 }
 	
 
 void Updata_set(void)
 {
-	Reset_set(&pidData_deep, remote_z);
-	Reset_set(&pidData_yaw_angle, remote_yaw);
 	remote_x = joystick_control.x_acc/32768.0*250;
 	remote_y = joystick_control.y_acc/32768.0*250;
 	remote_z = joystick_control.z_acc/32768.0*250;
-	remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_angle;
+	remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_init;
+	Reset_set(&pidData_deep, remote_z);
+	Reset_set(&pidData_yaw_angle, remote_yaw);
 }
 
 void Decode(const mavlink_message_t* msg)

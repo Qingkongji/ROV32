@@ -32,9 +32,9 @@ int main(void)
 	I2C_delay_ms(10000);
 	
 	/*控制初始化*/
-	remote_init();               //指令初始化赋值
 	Outer_Init();                //外环PID参数初始化
 	Inner_Init();                //内环PID参数初始化
+	remote_init();               //指令初始化赋值
 	
 #ifdef DEBUG
 	sprintf(str,"This is the debug edition\n");

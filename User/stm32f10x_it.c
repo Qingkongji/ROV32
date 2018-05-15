@@ -47,7 +47,9 @@
 static unsigned char TxBuffer[256];
 static unsigned char TxCounter=0;
 static unsigned char count=0; 
-static char str[100];
+#ifdef IRQDEBUG 
+	static char str[100];
+#endif
 
 /**
   * @brief  This function handles NMI exception.
