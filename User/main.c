@@ -13,6 +13,7 @@
 #include "debug.h"
 #include "mavlink.h"
 #include "tim4.h"
+#include "beep.h"
 
 int main(void)
 {	
@@ -28,6 +29,7 @@ int main(void)
 	TIM8_Init();                 //四路PWM接口-电机
 	LED_TIM4_Init();             //两路灯光PWM接口
 	Systick_Init();              //滴答定时器
+	BEEP_GPIO_Config();          //蜂鸣器接口初始化并拉低
 	
 	I2C_delay_ms(10000);
 	

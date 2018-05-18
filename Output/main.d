@@ -209,3 +209,4 @@
 ..\output\main.o: ..\Control\outer\outer.h
 ..\output\main.o: ..\User\systick\systick.h
 ..\output\main.o: ..\User\General_timx\tim4.h
+..\output\main.o: ..\User\beep\beep.h

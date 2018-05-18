@@ -365,7 +365,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER,DEBUG</Define>
               <Undefine></Undefine>
-              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop;..\Control\outer;..\Control\inner;..\Control\remote;..\User\debug;..\Mavlink\ROV</IncludePath>
+              <IncludePath>..\Libraries\CMSIS;..\User;..\Libraries\FWlib\inc;..\Sensors\ms5837;..\User\iic;..\User\usart1;..\User\usart3remap;..\Sensors\JY901;..\User\General_timx;..\User\Adanved_timx;..\Control\PID;..\User\systick;..\Control\loop;..\Control\outer;..\Control\inner;..\Control\remote;..\User\debug;..\Mavlink\ROV;..\User\beep</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -472,6 +472,11 @@
               <FileName>tim4.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\User\General_timx\tim4.c</FilePath>
+            </File>
+            <File>
+              <FileName>beep.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\User\beep\beep.c</FilePath>
             </File>
           </Files>
         </Group>

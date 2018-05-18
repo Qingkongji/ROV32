@@ -9,6 +9,7 @@
 "..\output\tim8.o"
 "..\output\systick.o"
 "..\output\tim4.o"
+"..\output\beep.o"
 "..\output\core_cm3.o"
 "..\output\system_stm32f10x.o"
 "..\output\misc.o"
