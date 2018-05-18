@@ -151,9 +151,9 @@ void Inner_Loop(void)
 	out_yaw_w = pidData_yaw_w.out/100;
 	out_deep = pidData_deep.out/50;
 	
-	out_pitch_w = 0;
-	out_roll_w = 0;
-	out_yaw_w = 0;
+//	out_pitch_w = 0;
+//	out_roll_w = 0;
+//	out_yaw_w = 0;
 
 	//µç»úÊä³ö
 	MOTOR_UL((int)(remote_x+remote_y+1*out_yaw_w),direction_ur);
