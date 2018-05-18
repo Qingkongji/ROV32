@@ -7,7 +7,7 @@
 #define  JY_USARTx                   USART3
 #define  JY_USART_CLK                RCC_APB1Periph_USART3
 #define  JY_USART_APBxClkCmd         RCC_APB1PeriphClockCmd
-#define  JY_USART_BAUDRATE           9600
+#define  JY_USART_BAUDRATE           115200
 
 //AFIO∫Í∂®“Â
 #define  JY_USART_AF_CLK             RCC_APB2Periph_AFIO
