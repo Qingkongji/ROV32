@@ -28,7 +28,6 @@ void remote_init(void)
 	remote_x = 0;
 	remote_y = 0;
 	remote_z = 0;
-	remote_yaw = 0;
 	remote_pitch_angle = 0;
 	remote_roll_angle = 0;
 	remote_pitch_w = 0;
