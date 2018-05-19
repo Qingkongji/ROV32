@@ -11,7 +11,7 @@ float out_roll_w;
 float out_yaw_w;
 float out_deep;
 
-unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 0,direction_dl = 1;
+unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 1,direction_dl = 0;
 unsigned int direction_1 = 1,direction_2 = 0,direction_3 = 0;
 
 void MOTOR_UR(signed int v,unsigned int direction)    //TIM3_CH1    UP-RIGHT
