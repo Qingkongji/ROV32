@@ -25,3 +25,16 @@ void BEEP_GPIO_Config(void)
 		GPIO_SetBits(BEEP_GPIO_PORT, BEEP_GPIO_PIN);
 }
 
+void BEEP_ON(int16_t f)
+{
+	int i = 0;
+	for( i = 0;i <= 100;i++ )
+	{
+		if(i/2)
+			GPIO_SetBits(BEEP_GPIO_PORT, BEEP_GPIO_PIN);
+		else
+			GPIO_ResetBits(BEEP_GPIO_PORT, BEEP_GPIO_PIN);
+		Delay_ms(1000/f);
+	}
+}
+

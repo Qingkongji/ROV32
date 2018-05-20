@@ -6,6 +6,8 @@
 
 
 void Systick_Init(void);
+void Delay_ms(__IO u32 nTime);
+
 
 #endif
 

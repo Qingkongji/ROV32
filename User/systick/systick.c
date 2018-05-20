@@ -1,5 +1,6 @@
 #include "systick.h"
 
+static __IO u32 TimingDelay;
 
 void Systick_Init(void)
 {
@@ -13,5 +14,21 @@ void Systick_Init(void)
 	{
 		while(1);
 	}
+}
+
+/**
+  * @brief   ms延时程序,10us为一个单位
+  * @param  
+  *		@arg nTime: Delay_ms( 1 ) 则实现的延时为 1 * 1ms = 1ms
+  * @retval  无
+  */
+void Delay_ms(__IO u32 nTime)
+{ 
+	TimingDelay = nTime;	
+
+	// 使能滴答定时器  
+	SysTick->CTRL |=  SysTick_CTRL_ENABLE_Msk;
+
+	while(TimingDelay != 0);
 }
 

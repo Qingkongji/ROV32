@@ -11,3 +11,4 @@
 ..\output\beep.o: ..\Libraries\FWlib\inc\stm32f10x_tim.h
 ..\output\beep.o: ..\Libraries\FWlib\inc\stm32f10x_usart.h
 ..\output\beep.o: ..\Libraries\FWlib\inc\misc.h
+..\output\beep.o: ..\User\systick\systick.h
