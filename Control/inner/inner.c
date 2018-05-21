@@ -9,7 +9,7 @@ struct PID pidData_deep;
 float out_pitch_w;
 float out_roll_w;
 float out_yaw_w;
-float out_deep;
+float out_deep = 0.0;
 
 unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 1,direction_dl = 0;
 unsigned int direction_1 = 1,direction_2 = 0,direction_3 = 0;
@@ -102,6 +102,10 @@ void MOTOR_3(signed int v,unsigned int direction)    //TIM8_CH3
 {
 	if(v == (TIM_GetCapture3(ADVANCE_TIM) - 1500))
 		return;
+	if(v > 0)
+		v = 2*v-31;
+	if(v < 0)
+		v = 2*v+31;
 	if(v > 500)
 		v = 500;
 	if(v < -500)
@@ -145,7 +149,7 @@ void Inner_Loop(void)
 	GetPID_OUT(&pidData_roll_w);
 	GetPID_OUT(&pidData_yaw_w);
 	GetPID_OUT(&pidData_deep);
-
+	
 	out_pitch_w = pidData_pitch_w.out/100;
 	out_roll_w = pidData_roll_w.out/100;
 	out_yaw_w = pidData_yaw_w.out/100;
@@ -154,6 +158,7 @@ void Inner_Loop(void)
 //	out_pitch_w = 0;
 //	out_roll_w = 0;
 //	out_yaw_w = 0;
+//	out_deep = 0;
 
 	//µç»úÊä³ö
 	MOTOR_UL((int)(remote_x+remote_y+1*out_yaw_w),direction_ur);
@@ -162,7 +167,7 @@ void Inner_Loop(void)
 	MOTOR_DR((int)(remote_x+remote_y-1*out_yaw_w),direction_dr);
 	MOTOR_1((int)(remote_z+out_deep + 1*out_roll_w + 1*out_pitch_w),direction_1);
 	MOTOR_2((int)(remote_z+out_deep - 1*out_roll_w + 1*out_pitch_w),direction_2);
-	MOTOR_3((int)(remote_z+out_deep - 2*out_pitch_w),direction_3);
+	MOTOR_3((int)(remote_z+out_deep - 1*out_pitch_w),direction_3);
 		
 }
 

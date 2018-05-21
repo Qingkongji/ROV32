@@ -1,6 +1,6 @@
 #include "loop.h"
 
-static short cnt_Inner,cnt_Remote,cnt_Outer,cnt_Databack,cnt_Ms5837,cnt_Heartbeat;
+static short cnt_Inner = 0,cnt_Remote = 0,cnt_Outer = 0,cnt_Databack = 0,cnt_Ms5837 = 0,cnt_Heartbeat = 0;
 int8_t Lock_flag;           //0为上锁，1为解锁
 int cnt_MS5837;
 //static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
@@ -104,9 +104,9 @@ void ROV_Loop(void)
 		cnt_Inner = 0;
 	}
 	
-	if( cnt_Remote >= 10 )
+	if( cnt_Remote >= 20 )
 	{
-		Loop_Remote(); //更新遥控信号以及传感器存储数据 100Hz
+		Loop_Remote(); //更新遥控信号以及传感器存储数据 50Hz
 		cnt_Remote = 0;
 	}
 	
@@ -123,11 +123,11 @@ void ROV_Loop(void)
 		cnt_Databack = 0;
 	}
 	
-	if( cnt_Ms5837 >= 67 )
-	{
-		Loop_Ms5837();      //MS5837读取 15Hz
-		cnt_Ms5837 = 0;
-	}
+//	if( cnt_Ms5837 >= 67 )
+//	{
+//		Loop_Ms5837();      //MS5837读取 15Hz
+//		cnt_Ms5837 = 0;
+//	}
 	
 	if( cnt_Heartbeat >= 1000)
 	{

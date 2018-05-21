@@ -26,11 +26,16 @@ Project File Date:  05/18/2018
 
 <h2>Output:</h2>
 Build target 'rov_attitude'
-compiling main.c...
+compiling loop.c...
+..\Control\loop\loop.c(47): warning:  #550-D: variable "len" was set but never used
+          int len;
+..\Control\loop\loop.c(84): warning:  #177-D: function "Loop_Ms5837" was declared but never referenced
+  static void Loop_Ms5837(void)
+..\Control\loop\loop.c: 2 warnings, 0 errors
 linking...
 Program Size: Code=26164 RO-data=3364 RW-data=280 ZI-data=5936  
 FromELF: creating hex file...
-"..\Output\rov_attitude.axf" - 0 Error(s), 0 Warning(s).
+"..\Output\rov_attitude.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
   F:\ROV32-latest\Project\RTE

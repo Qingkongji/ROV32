@@ -1,6 +1,6 @@
 #include "systick.h"
 
-static __IO u32 TimingDelay;
+static __IO u32 TimingDelay = 0;
 
 void Systick_Init(void)
 {
