@@ -151,12 +151,12 @@ void Inner_Loop(void)
 	GetPID_OUT(&pidData_deep);
 	
 	out_pitch_w = pidData_pitch_w.out/100;
-	out_roll_w = pidData_roll_w.out/100;
+//	out_roll_w = pidData_roll_w.out/100;
 	out_yaw_w = pidData_yaw_w.out/100;
 	out_deep = pidData_deep.out/50;
 	
 //	out_pitch_w = 0;
-//	out_roll_w = 0;
+	out_roll_w = 0;
 //	out_yaw_w = 0;
 //	out_deep = 0;
 

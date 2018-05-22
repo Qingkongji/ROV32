@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\Output\rov_attitude.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\Output\rov_attitude.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Mon May 21 20:45:35 2018
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Tue May 22 09:39:52 2018
 <BR><P>
 <H3>Maximum Stack Usage =       1080 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1358,10 +1358,11 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
 
-<P><STRONG><a name="[5d]"></a>ROV_Loop</STRONG> (Thumb, 200 bytes, Stack size 8 bytes, loop.o(.text))
+<P><STRONG><a name="[5d]"></a>ROV_Loop</STRONG> (Thumb, 220 bytes, Stack size 8 bytes, loop.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 912<LI>Call Chain = ROV_Loop &rArr; Loop_Databack &rArr; JY901_Send_MAVLink_Message &rArr; mavlink_msg_jy901_data_pack &rArr; mavlink_finalize_message_buffer &rArr; mavlink_sign_packet &rArr; mavlink_sha256_final_48 &rArr; mavlink_sha256_update &rArr; mavlink_sha256_calc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Heartbeat
+<LI><a href="#[eb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Ms5837
 <LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Databack
 <LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Outer
 <LI><a href="#[e4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Loop_Remote
@@ -1470,7 +1471,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e3]"></a>Inner_Loop</STRONG> (Thumb, 716 bytes, Stack size 32 bytes, inner.o(.text))
+<P><STRONG><a name="[e3]"></a>Inner_Loop</STRONG> (Thumb, 708 bytes, Stack size 32 bytes, inner.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = Inner_Loop &rArr; MS5837_depth &rArr; __aeabi_ddiv &rArr; _double_round
 </UL>
 <BR>[Calls]<UL><LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_depth
@@ -1598,21 +1599,27 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[115]"></a>MS5837_Read_Part1</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ms5837.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Single_Write
+<P><STRONG><a name="[115]"></a>MS5837_Read_Part1</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, ms5837.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = MS5837_Read_Part1 &rArr; I2C_Single_Write &rArr; I2C_SendByte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Single_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
 </UL>
 
-<P><STRONG><a name="[116]"></a>MS5837_Read_Part2</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, ms5837.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadBuffer
+<P><STRONG><a name="[116]"></a>MS5837_Read_Part2</STRONG> (Thumb, 50 bytes, Stack size 8 bytes, ms5837.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = MS5837_Read_Part2 &rArr; I2C_ReadBuffer &rArr; I2C_ReadByte
+</UL>
+<BR>[Calls]<UL><LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_ReadBuffer
 <LI><a href="#[80]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;I2C_Single_Write
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
 </UL>
 
-<P><STRONG><a name="[117]"></a>MS5837_Read_Part3</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, ms5837.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_temperature
+<P><STRONG><a name="[117]"></a>MS5837_Read_Part3</STRONG> (Thumb, 82 bytes, Stack size 8 bytes, ms5837.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = MS5837_Read_Part3 &rArr; MS5837_Calculate &rArr; __aeabi_ldivmod &rArr; __aeabi_uldivmod
+</UL>
+<BR>[Calls]<UL><LI><a href="#[112]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_temperature
 <LI><a href="#[111]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_pressure
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Calculate
 <LI><a href="#[100]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_depth
@@ -1622,8 +1629,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
 </UL>
 
-<P><STRONG><a name="[ec]"></a>MS5837_Read_From_Part</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, ms5837.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_Part3
+<P><STRONG><a name="[ec]"></a>MS5837_Read_From_Part</STRONG> (Thumb, 156 bytes, Stack size 8 bytes, ms5837.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = MS5837_Read_From_Part &rArr; MS5837_Read_Part3 &rArr; MS5837_Calculate &rArr; __aeabi_ldivmod &rArr; __aeabi_uldivmod
+</UL>
+<BR>[Calls]<UL><LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_Part3
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_Part2
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_Part1
 </UL>
@@ -2303,7 +2312,7 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROV_Loop
 </UL>
 
-<P><STRONG><a name="[e8]"></a>Loop_Databack</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, loop.o(.text))
+<P><STRONG><a name="[e8]"></a>Loop_Databack</STRONG> (Thumb, 22 bytes, Stack size 8 bytes, loop.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 904<LI>Call Chain = Loop_Databack &rArr; JY901_Send_MAVLink_Message &rArr; mavlink_msg_jy901_data_pack &rArr; mavlink_finalize_message_buffer &rArr; mavlink_sign_packet &rArr; mavlink_sha256_final_48 &rArr; mavlink_sha256_update &rArr; mavlink_sha256_calc
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Send_MAVLink_Message
@@ -2312,8 +2321,12 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROV_Loop
 </UL>
 
-<P><STRONG><a name="[eb]"></a>Loop_Ms5837</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, loop.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
+<P><STRONG><a name="[eb]"></a>Loop_Ms5837</STRONG> (Thumb, 8 bytes, Stack size 8 bytes, loop.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = Loop_Ms5837 &rArr; MS5837_Read_From_Part &rArr; MS5837_Read_Part3 &rArr; MS5837_Calculate &rArr; __aeabi_ldivmod &rArr; __aeabi_uldivmod
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MS5837_Read_From_Part
+</UL>
+<BR>[Called By]<UL><LI><a href="#[5d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ROV_Loop
 </UL>
 
 <P><STRONG><a name="[ed]"></a>Loop_Heartbeat</STRONG> (Thumb, 52 bytes, Stack size 24 bytes, loop.o(.text))

@@ -66,18 +66,9 @@ static void Loop_Databack(void)
     sprintf(str,"pitch=%d,roll=%d,yaw=%d\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
 		Usart_SendString(NEO_USARTx,str);
 #endif
-     len = JY901_Send_MAVLink_Message(&msg,buf);
-    
-		 
-	
-//发送JY901消息
-//经过测试，JY901能够正常读取传感器的值并进行发送
-#ifdef JY901DEBUG		
-	sprintf(str,"roll=%f,yaw=%f,pitch=%f\n",JY901_Angle.Angle[0],JY901_Angle.Angle[1],JY901_Angle.Angle[2]);
-	Usart_SendString(NEO_USARTx,str);
-#endif
-	len = JY901_Send_MAVLink_Message(&msg,buf);
-    
+//		len = JY901_Send_MAVLink_Message(&msg,buf);
+    JY901_Send_MAVLink_Message(&msg,buf);
+		     
 }
 
 //MS5837 Deep Sensor Data collection
@@ -123,11 +114,11 @@ void ROV_Loop(void)
 		cnt_Databack = 0;
 	}
 	
-//	if( cnt_Ms5837 >= 67 )
-//	{
-//		Loop_Ms5837();      //MS5837读取 15Hz
-//		cnt_Ms5837 = 0;
-//	}
+	if( cnt_Ms5837 >= 67 )
+	{
+		Loop_Ms5837();      //MS5837读取 15Hz
+		cnt_Ms5837 = 0;
+	}
 	
 	if( cnt_Heartbeat >= 1000)
 	{
