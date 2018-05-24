@@ -18,7 +18,7 @@
 int main(void)
 {	
 	
-	char str[100];
+	char str[100] = {'0'};
 	
 	/*初始化USART 115200 8-N-1，中断接收*/
 	/*接口初始化*/

@@ -1,15 +1,15 @@
 #include "outer.h"
 
-struct PID pidData_pitch_angle;
-struct PID pidData_roll_angle;
-struct PID pidData_yaw_angle;
+struct PID pidData_pitch_angle = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
+struct PID pidData_roll_angle = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
+struct PID pidData_yaw_angle = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
 
-float out_pitch_angle;
-float out_roll_angle;
-float out_yaw_angle;
+float out_pitch_angle = 0.0;
+float out_roll_angle = 0.0;
+float out_yaw_angle = 0.0;
 
 //static int cnt = 0;
-//static char str[100];
+//static char str[100] = {'0'};
 
 void Outer_Init(void)
 {

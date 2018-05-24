@@ -1,14 +1,14 @@
 #include "JY901.h"
 #include <string.h>
 
-struct SAcc     JY901_Acc;    //加速度
-struct SGyro 		JY901_Gyro;   //角速度
-struct SAngle 	JY901_Angle;  //角度
+struct SAcc     JY901_Acc = {{0},0.02};    //加速度
+struct SGyro 		JY901_Gyro = {{0.0},0.02};   //角速度
+struct SAngle 	JY901_Angle = {{0.0},0.02};  //角度
 
 void GetDataFromJY901(unsigned char ucData)
 {
-	static unsigned char ucRxBuffer[250];
-	static unsigned char ucRxCnt = 0;	
+	static unsigned char ucRxBuffer[250] = {'0'};
+	static unsigned char ucRxCnt = '0';	
 	
 	ucRxBuffer[ucRxCnt++]=ucData;
 	

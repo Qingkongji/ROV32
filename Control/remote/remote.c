@@ -1,22 +1,22 @@
 #include "remote.h"
 //fix conflict
 
-float remote_pitch_angle;
-float remote_roll_angle;
-float remote_yaw_init;
+float remote_pitch_angle = 0.0;
+float remote_roll_angle = 0.0;
+float remote_yaw_init = 0.0;
 
-float remote_pitch_w;
-float remote_roll_w;
-float remote_yaw_w;
+float remote_pitch_w = 0.0;
+float remote_roll_w = 0.0;
+float remote_yaw_w = 0.0;
 
-float remote_x;       //signed + -
-float remote_y;
-float remote_z;
-float remote_yaw;
+float remote_x = 0.0;       //signed + -
+float remote_y = 0.0;
+float remote_z = 0.0;
+float remote_yaw = 0.0;
 
 
-mavlink_joystick_control_t joystick_control;
-mavlink_heartbeat_t heartbeat;
+mavlink_joystick_control_t joystick_control = {0,0,0,0,0,0};
+mavlink_heartbeat_t heartbeat = {0,0,0,0,0,0};
 
 
 void remote_init(void)

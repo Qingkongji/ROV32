@@ -44,11 +44,11 @@
 /*            Cortex-M3 Processor Exceptions Handlers                         */
 /******************************************************************************/
 
-static unsigned char TxBuffer[256];
+static unsigned char TxBuffer[256] = {'0'};
 static unsigned char TxCounter=0;
 static unsigned char count=0; 
 #ifdef IRQDEBUG 
-	static char str[100];
+	static char str[100] = {'0'};
 #endif
 
 /**

@@ -1,12 +1,12 @@
 #include "loop.h"
 
 static short cnt_Inner = 0,cnt_Remote = 0,cnt_Outer = 0,cnt_Databack = 0,cnt_Ms5837 = 0,cnt_Heartbeat = 0;
-int8_t Lock_flag;           //0为上锁，1为解锁
-int cnt_MS5837;
+int8_t Lock_flag = 0;           //0为上锁，1为解锁
+int cnt_MS5837 = 0;
 //static MS5837_ValueTypeDef MS5837_temp={0,0,0,0.03};
 
-static mavlink_message_t msg;
-static uint8_t buf[BUF_LENGTH];
+static mavlink_message_t msg = {0,0,0,0,0,0,0,0,0,{0},{0},{0}};
+static uint8_t buf[BUF_LENGTH] = {0};
 
 void loop_cnt(void)
 {

@@ -1,14 +1,14 @@
 #include "inner.h"
 
-struct PID pidData_pitch_w;
-struct PID pidData_roll_w;
-struct PID pidData_yaw_w;
+struct PID pidData_pitch_w = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
+struct PID pidData_roll_w = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
+struct PID pidData_yaw_w = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
 
-struct PID pidData_deep;
+struct PID pidData_deep = { 0.0,0.0,0.0,0.02,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0,0.0 };
 
-float out_pitch_w;
-float out_roll_w;
-float out_yaw_w;
+float out_pitch_w = 0.0;
+float out_roll_w = 0.0;
+float out_yaw_w = 0.0;
 float out_deep = 0.0;
 
 unsigned int direction_ur = 0,direction_ul = 1,direction_dr = 1,direction_dl = 0;

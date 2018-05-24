@@ -7,12 +7,12 @@ MS5837_ValueTypeDef MS5837={0,0,0,0.03};
 #define  mbar  					1.0f
 #define  fluidDensity   997.0f//淡水密度997kg/m3  ，海水1029
 
-uint16_t C[8];
-uint32_t D1, D2;
-int32_t Temp;
-int32_t P;
+uint16_t C[8] = {0};
+uint32_t D1 = 0, D2 = 0;
+int32_t Temp = 0;
+int32_t P = 0;
 static int Part_of_MS5837 = 1;
-static uint8_t bufe[3];
+static uint8_t bufe[3] = {0};
 
 
 /****************************
