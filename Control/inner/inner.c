@@ -122,7 +122,7 @@ void Inner_Init(void)
 	
 	PIDdataInit(&pidData_pitch_w,50,2,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 	PIDdataInit(&pidData_roll_w,50,5,5,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
-	PIDdataInit(&pidData_yaw_w,50,5,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
+	PIDdataInit(&pidData_yaw_w,50,0,0,5000,10000);//后五个为PID参数，一个积分限幅，一个输出限幅，最终PID输出与电机PWM比例为100：1
 }
 
 void Inner_Loop(void)
@@ -151,23 +151,26 @@ void Inner_Loop(void)
 	GetPID_OUT(&pidData_deep);
 	
 	out_pitch_w = pidData_pitch_w.out/100;
-//	out_roll_w = pidData_roll_w.out/100;
+	out_roll_w = pidData_roll_w.out/100;
 	out_yaw_w = pidData_yaw_w.out/100;
 	out_deep = pidData_deep.out/50;
 	
 //	out_pitch_w = 0;
-	out_roll_w = 0;
+//	out_roll_w = 0;
 //	out_yaw_w = 0;
-//	out_deep = 0;
+	out_deep = 0;
 
 	//电机输出
-	MOTOR_UL((int)(remote_x+remote_y+1*out_yaw_w),direction_ur);
+	MOTOR_UL((int)(remote_x+remote_y-1*out_yaw_w),direction_ur);
 	MOTOR_UR((int)(remote_x-remote_y),direction_ul);
 	MOTOR_DL((int)(remote_x-remote_y),direction_dl);
 	MOTOR_DR((int)(remote_x+remote_y-1*out_yaw_w),direction_dr);
-	MOTOR_1((int)(remote_z+out_deep + 1*out_roll_w + 1*out_pitch_w),direction_1);
-	MOTOR_2((int)(remote_z+out_deep - 1*out_roll_w + 1*out_pitch_w),direction_2);
-	MOTOR_3((int)(remote_z+out_deep - 1*out_pitch_w),direction_3);
+//	MOTOR_1((int)(remote_z+out_deep + 1*out_roll_w + 1*out_pitch_w),direction_1);
+//	MOTOR_2((int)(remote_z+out_deep - 1*out_roll_w + 1*out_pitch_w),direction_2);
+//	MOTOR_3((int)(remote_z+out_deep - 1*out_pitch_w),direction_3);
+	MOTOR_1((int)(remote_z - 1*out_roll_w - 1*out_pitch_w),direction_1);
+	MOTOR_2((int)(remote_z + 1*out_roll_w - 1*out_pitch_w),direction_2);
+	MOTOR_3((int)(remote_z + 1*out_pitch_w),direction_3);
 		
 }
 
