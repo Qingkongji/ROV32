@@ -42,10 +42,10 @@ void remote_init(void)
 
 void Updata_set(void)
 {
-	remote_x = joystick_control.x_acc/32768.0*250;
-	remote_y = joystick_control.y_acc/32768.0*250;
-	remote_z = joystick_control.z_acc/32768.0*250;
-	remote_yaw = joystick_control.yaw_acc/32768.0*180+remote_yaw_init;
+	remote_x = joystick_control.x_acc/32768.0*50;
+	remote_y = joystick_control.y_acc/32768.0*50;
+	remote_z = joystick_control.z_acc/32768.0*50;
+	remote_yaw = joystick_control.yaw_acc/32768.0*36+remote_yaw_init;
 	Reset_set(&pidData_deep, remote_z);
 	Reset_set(&pidData_yaw_angle, remote_yaw);
 }

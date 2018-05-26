@@ -13,9 +13,9 @@ float out_yaw_angle = 0.0;
 
 void Outer_Init(void)
 {
-	PIDdataInit(&pidData_pitch_angle,40,0,5,5000,10000);      //kp ki kd imax outmax
+	PIDdataInit(&pidData_pitch_angle,80,0,5,5000,10000);      //kp ki kd imax outmax
 	PIDdataInit(&pidData_roll_angle,40,0,5,5000,10000);
-	PIDdataInit(&pidData_yaw_angle,20,0,0,5000,10000);
+	PIDdataInit(&pidData_yaw_angle,10,0,0,5000,10000);
 }
 
 void Outer_Loop(void)
@@ -48,9 +48,9 @@ void Outer_Loop(void)
 	GetPID_OUT(&pidData_roll_angle);
 	GetPID_OUT(&pidData_yaw_angle);
 	//Íâ»·PIDÊä³ö
-	out_pitch_angle=pidData_pitch_angle.out/100;
-	out_roll_angle=pidData_roll_angle.out/100;
-	out_yaw_angle=pidData_yaw_angle.out/100;
+	out_pitch_angle=pidData_pitch_angle.out/20;
+	out_roll_angle=pidData_roll_angle.out/40;
+	out_yaw_angle=pidData_yaw_angle.out/20;
 	
 	Reset_set(&pidData_pitch_w, out_pitch_angle);
 	Reset_set(&pidData_roll_w, out_roll_angle);
