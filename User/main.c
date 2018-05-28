@@ -53,6 +53,9 @@ int main(void)
 	Outer_Init();                //外环PID参数初始化
 	Inner_Init();                //内环PID参数初始化
 	remote_init();               //指令初始化赋值
+	TIM3_Unlock(1500);
+	TIM8_Unlock(1499);
+	I2C_delay_ms(500);
 	
 	cnt_init();                  //循环内计数初始化
 			
