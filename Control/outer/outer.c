@@ -13,7 +13,7 @@ float out_yaw_angle = 0.0;
 
 void Outer_Init(void)
 {
-	PIDdataInit(&pidData_pitch_angle,80,0,5,5000,10000);      //kp ki kd imax outmax
+	PIDdataInit(&pidData_pitch_angle,80,0,5,5000,10000);      //kp ki kd imax outmax.
 	PIDdataInit(&pidData_roll_angle,40,0,5,5000,10000);
 	PIDdataInit(&pidData_yaw_angle,10,0,0,5000,10000);
 }
