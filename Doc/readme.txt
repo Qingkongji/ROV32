@@ -1,6 +1,6 @@
 usart1.c 配置与nanopi通信的串口，TX-PA9 RX-PA10,波特率设置为115200，宏定义为 NEO_USART_BAUDRATE，32收数据采用中断方式，中断服务函数 NEO_USART_IRQHandler() .
 
-ms5837水深传感器采用模拟iic方式读取，配置程序由 iic.c 和 ms5837.c 完成，SCL-PB6,SDA-PB7 .
+ms5837水深传感器采用硬件iic方式读取，配置程序由 iic.c 和 ms5837.c 完成，SCL-PB6,SDA-PB7 .
 
 usart3.c 配置与JY901通信的串口3，这里用的是串口3的部分重映射端口， TX-PC10 RX-PC11 ,这里由于不需要给JY901发指令，所以PC10可接可不接，波特率为115200，如果要改变波特率，
 需要通过将JY901接到电脑上，用地面站进行修改，单纯修改串口3波特率就不能正常读出数据。中断服务函数 USART3_IRQHandler() .
